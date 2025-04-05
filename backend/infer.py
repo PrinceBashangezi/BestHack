@@ -1,25 +1,30 @@
-from inference_sdk import InferenceHTTPClient
-import json
-import os
+from azure.cognitiveservices.vision.computervision import ComputerVisionClient
+from msrest.authentication import CognitiveServicesCredentials
 
-# Roboflow credentials
-CLIENT = InferenceHTTPClient(
-    api_url="https://detect.roboflow.com",
-    api_key="rf_UHOSCWxlPbUjrpm3I92G1puYqZm1"
-)
-
-# Image path (adjust as needed)
-image_path = "uploads/food.jpg"
-
-# Model ID from your Roboflow project/version
-model_id = "food-imgae-yolo/2"  # fix spelling if needed
-
-# Run inference
-result = CLIENT.infer(image_path, model_id=model_id)
-
-# Save result to file
-output_path = os.path.join(os.path.dirname(image_path), "roboflow_results.json")
-with open(output_path, "w") as f:
-    json.dump(result, f, indent=2)
-
-print(f"Saved Roboflow result to {output_path}")
+def analyze_image(image_path):
+    # Your Azure credentials
+    subscription_key = "1gKnUaneC6lyNxtc9bhKeWLkI0HiBXy2KcaYrhuCaiFlJ1NQE6baJQQJ99BDAC4f1cMXJ3w3AAAFACOGN7or"
+    endpoint = "https://5chack.cognitiveservices.azure.com/"
+    
+    # Create the Computer Vision client
+    client = ComputerVisionClient(endpoint, CognitiveServicesCredentials(subscription_key))
+    
+    # Analyze the image
+    with open(image_path, "rb") as image_stream:
+        analysis = client.analyze_image_in_stream(
+            image=image_stream,
+            visual_features=["Tags", "Objects", "Description"]
+        )
+    
+    # Convert to dictionary format for JSON response
+    result = {
+        "tags": [{"name": tag.name, "confidence": tag.confidence} for tag in analysis.tags],
+        "objects": [{"object": obj.object_property, "confidence": obj.confidence} for obj in analysis.objects],
+        "description": {
+            "captions": [{"text": caption.text, "confidence": caption.confidence} 
+                        for caption in analysis.description.captions],
+            "tags": analysis.description.tags
+        }
+    }
+    
+    return result

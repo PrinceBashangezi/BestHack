@@ -1,0 +1,122 @@
+{
+    "vision_analysis": {
+        "tags": [
+            {
+                "name": "food",
+                "confidence": 0.9925152063369751
+            },
+            {
+                "name": "plate",
+                "confidence": 0.9867373704910278
+            },
+            {
+                "name": "vegetable",
+                "confidence": 0.9547810554504395
+            },
+            {
+                "name": "asparagus",
+                "confidence": 0.915591835975647
+            },
+            {
+                "name": "dish",
+                "confidence": 0.8945039510726929
+            },
+            {
+                "name": "cuisine",
+                "confidence": 0.8836339712142944
+            },
+            {
+                "name": "ingredient",
+                "confidence": 0.8750573396682739
+            },
+            {
+                "name": "broccoli",
+                "confidence": 0.8486895561218262
+            },
+            {
+                "name": "cruciferous vegetables",
+                "confidence": 0.8432892560958862
+            },
+            {
+                "name": "indoor",
+                "confidence": 0.7597404718399048
+            },
+            {
+                "name": "rice",
+                "confidence": 0.5650752782821655
+            },
+            {
+                "name": "recipe",
+                "confidence": 0.5570412874221802
+            },
+            {
+                "name": "plant",
+                "confidence": 0.5431034564971924
+            }
+        ],
+        "objects": [],
+        "description": {
+            "captions": [
+                {
+                    "text": "a plate of food",
+                    "confidence": 0.5425564646720886
+                }
+            ],
+            "tags": [
+                "plate",
+                "food",
+                "vegetable",
+                "different",
+                "meal",
+                "meat",
+                "arranged",
+                "sliced"
+            ]
+        }
+    },
+    "nutrition_analysis": {
+        "nutritional_analysis": {
+            "estimated_calories": {
+                "range": "50-150 calories",
+                "notes": "Calories are estimated based on a standard serving size of mixed cruciferous vegetables (broccoli, asparagus) without added fats or sauces. Actual calories may vary if oils, cheeses, or dressings are included."
+            },
+            "macronutrient_breakdown": {
+                "protein": "3-5 grams",
+                "carbohydrates": "10-15 grams",
+                "fiber": "4-6 grams",
+                "fat": "0-3 grams",
+                "notes": "Macronutrients are primarily from fiber-rich vegetables. Fat content assumes no added oils or butter."
+            },
+            "key_vitamins_and_minerals": {
+                "vitamin_C": "High (broccoli and asparagus are excellent sources)",
+                "vitamin_K": "High (cruciferous vegetables like broccoli are rich in K)",
+                "folate": "Moderate (asparagus is a good source)",
+                "potassium": "Moderate",
+                "iron": "Small amounts",
+                "calcium": "Small amounts",
+                "notes": "Cruciferous vegetables are nutrient-dense and provide a wide array of micronutrients."
+            },
+            "health_benefits": {
+                "anti-inflammatory": "Broccoli and asparagus contain antioxidants like sulforaphane and flavonoids.",
+                "digestive_health": "High fiber content supports gut health and regularity.",
+                "immune_support": "Vitamin C boosts immune function.",
+                "bone_health": "Vitamin K aids in calcium absorption and bone metabolism.",
+                "detoxification": "Cruciferous vegetables support liver detox pathways."
+            },
+            "potential_allergens_or_concerns": {
+                "allergens": "None common (unless cross-contamination occurs)",
+                "dietary_concerns": {
+                    "fodmaps": "Broccoli and asparagus contain FODMAPs (may irritate IBS sufferers in large quantities).",
+                    "thyroid_interaction": "Cruciferous vegetables in very large amounts may affect thyroid function in sensitive individuals (rare)."
+                }
+            },
+            "recommendations_for_a_healthier_meal": {
+                "add_protein": "Include lean protein (e.g., grilled chicken, tofu, or lentils) to make it more balanced.",
+                "healthy_fats": "Add avocado or drizzle with olive oil for satiety and fat-soluble vitamin absorption.",
+                "portion_control": "Ensure vegetables fill at least half the plate for volume and nutrients.",
+                "seasoning_tips": "Use herbs, lemon juice, or garlic instead of heavy sauces or salt.",
+                "cooking_methods": "Steam or roast instead of frying to preserve nutrients."
+            }
+        }
+    }
+}
