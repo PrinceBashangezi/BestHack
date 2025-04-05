@@ -11,6 +11,7 @@ export default function HomeScreen() {
   const [password, setPassword] = useState('')
   const [loading, setLoading] = useState(false)
   const [session, setSession] = useState<Session | null>(null)
+  const [isLoggedIn, signedIn] = useState(false)
   useEffect(() => {
     supabase.auth.getSession().then(({ data: { session } }) => {
       setSession(session)
@@ -28,6 +29,9 @@ export default function HomeScreen() {
     })
 
     if (error) Alert.alert(error.message)
+    else {
+      signedIn(true)
+    }
     setLoading(false)
   }
 
@@ -45,9 +49,18 @@ export default function HomeScreen() {
     if (!session) Alert.alert('Please check your inbox for email verification!')
     setLoading(false)
   }
-  
+
   return (
     <View style={styles.container}>
+      {isLoggedIn? (
+        <>
+        <View>  
+          
+        </View>
+        </>
+        //insert expression
+      ):(
+        <> 
       <View style={[styles.verticallySpaced, styles.mt20]}>
         <Input
           label="Email"
@@ -75,8 +88,10 @@ export default function HomeScreen() {
       <View style={styles.verticallySpaced}>
         <Button title="Sign up" disabled={loading} onPress={() => signUpWithEmail()} />
       </View>
+      </> 
+      )}
     </View>
-  )
+  );
 }
 
 const styles = StyleSheet.create({
