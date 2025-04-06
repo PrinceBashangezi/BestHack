@@ -223,6 +223,9 @@ def analyze_menu(vision_results, user_preferences=None):
     # Default preferences if none provided
     if not user_preferences:
         user_preferences = {
+            "age": 30,
+            "height": 170,
+            "weight": 70,
             "dietary_restrictions": [],
             "health_goals": "balanced",
             "calories_target": "moderate"
@@ -235,7 +238,10 @@ def analyze_menu(vision_results, user_preferences=None):
     
     Menu text/description: {detected_text} {detected_items}
     
-    User preferences:
+    User information:
+    -age: {user_preferences['age']}  
+    - Height: {user_preferences['height']} 
+    - Weight: {user_preferences['weight']} pounds
     - Dietary restrictions: {', '.join(user_preferences['dietary_restrictions']) if user_preferences['dietary_restrictions'] else 'None'}
     - Health goals: {user_preferences['health_goals']}
     - Calorie target: {user_preferences['calories_target']}

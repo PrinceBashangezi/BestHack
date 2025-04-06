@@ -13,6 +13,8 @@ import * as ImagePicker from 'expo-image-picker';
 import { Button } from '@rneui/themed';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
+import { collection, addDoc } from "firebase/firestore";
+import { firestore, auth } from '../supabase';
 
 // Updated API URL - you might need to adjust this based on your network setup
 const API_URL = Platform.OS === 'android' 
@@ -187,6 +189,39 @@ export default function FoodAnalysisScreen() {
     );
   };
 
+  const storeMeal = async (data: any) => {
+    if (!auth.currentUser) return;
+
+    try {
+        // Determine meal type based on the current time
+        const currentHour = new Date().getHours();
+        let mealType: 'breakfast' | 'lunch' | 'dinner';
+        if (currentHour < 11) {
+          mealType = 'breakfast';
+        } else if (currentHour < 17) {
+          mealType = 'lunch';
+        } else {
+          mealType = 'dinner';
+        }
+
+        // Extract recommendation from analysis data
+        const mealTaken = data?.nutrition_analysis.nutritional_analysis.recommendations_for_a_healthier_meal || 'No specific meal analysis available';
+
+        // Store the recommendation in the user's recommendations subcollection
+        const mealRef = collection(firestore, `Users/${auth.currentUser.uid}/mealsTaken`);
+        await addDoc(mealRef, {
+          mealTaken,
+          takenAt: new Date(),
+          mealType,
+        });
+        console.log('Meal stored successfully in Firestore.');
+      
+    } catch (error) {
+      console.error('Error storing recommendation:', error);
+    }
+  };
+
+
   // Main screen
   return (
     <ScrollView style={styles.container}>
@@ -309,6 +344,17 @@ export default function FoodAnalysisScreen() {
               ))}
             </ThemedView>
           )}
+          {/* Store meal data */}
+          <Button
+            title="Store Meal"
+            color={'forestgreen'}
+            onPress={() => {
+              storeMeal(analysis);
+              setAnalysis(null);
+              setImage(null);
+            }}
+            buttonStyle={styles.analyzeButton}
+          />
         </ThemedView>
       )}
     </ScrollView>

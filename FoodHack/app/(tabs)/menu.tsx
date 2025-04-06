@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { 
   StyleSheet, 
   View, 
@@ -10,9 +10,11 @@ import {
   Text
 } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
-import { Button, CheckBox, Input, ListItem } from '@rneui/themed';
+import { Button } from '@rneui/themed';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
+import { doc, getDoc, collection, addDoc } from "firebase/firestore";
+import { firestore, auth } from '../supabase';
 
 // Use the same API URL as in your analyze.tsx file
 const API_URL = Platform.OS === 'android' 
@@ -23,31 +25,44 @@ export default function MenuAnalysisScreen() {
   const [image, setImage] = useState<string | null>(null);
   const [analysis, setAnalysis] = useState<any>(null);
   const [loading, setLoading] = useState(false);
-
   // User preferences state
+  const [age, setAge] = useState<number>(0);; // Placeholder, replace with actual age fetching logic
+  const [weight, setWeight] = useState<number>(0);
+  const [height, setHeight] = useState<number>(0);
   const [dietaryRestrictions, setDietaryRestrictions] = useState<string[]>([]);
   const [healthGoal, setHealthGoal] = useState<string>('balanced');
   const [calorieTarget, setCalorieTarget] = useState<string>('moderate');
-  const [showPreferences, setShowPreferences] = useState(false);
 
-  // Diet restriction options
-  const dietOptions = [
-    { title: 'Vegetarian', value: 'vegetarian' },
-    { title: 'Vegan', value: 'vegan' },
-    { title: 'Gluten-Free', value: 'gluten-free' },
-    { title: 'Dairy-Free', value: 'dairy-free' },
-    { title: 'Low-Carb', value: 'low-carb' },
-    { title: 'Keto', value: 'keto' },
-  ];
-
-  // Toggle diet restriction
-  const toggleDietRestriction = (value: string) => {
-    if (dietaryRestrictions.includes(value)) {
-      setDietaryRestrictions(dietaryRestrictions.filter(item => item !== value));
-    } else {
-      setDietaryRestrictions([...dietaryRestrictions, value]);
+  useEffect(() => { 
+    const user = auth.currentUser;
+    if (user) {
+      fetchUserHealthInfo(user.uid);
+    }
+  }, []);
+  
+  // Fetch user preferences from Firestore
+  const fetchUserHealthInfo = async (userId: string) => {
+    try {
+      const userRef = doc(firestore, 'Users', userId);
+      const userDoc = await getDoc(userRef);
+      if (userDoc.exists()) {
+        const data = userDoc.data();
+        if (data) {
+          setAge(data.healthInfo.age || 0);
+          setWeight(data.healthInfo.weight || 0);
+          setHeight(data.healthInfo.height || 0);
+          setDietaryRestrictions(data.healthInfo.dietaryRestrictions || '');
+          setHealthGoal(data.healthInfo.healthGoals || 'balanced');
+          setCalorieTarget(data.healthInfo.dailyCalorieTarget || 'moderate');
+        }
+      } else {
+        console.log("No such document!");
+      }
+    } catch (error) {
+      console.error("Error fetching user preferences:", error);
     }
   };
+
 
   // Take a photo with the camera
   const takePhoto = async () => {
@@ -123,6 +138,9 @@ export default function MenuAnalysisScreen() {
       
       // Add user preferences to the request
       const preferences = {
+        age: age,
+        weight: weight,
+        height: height,
         dietary_restrictions: dietaryRestrictions,
         health_goals: healthGoal,
         calories_target: calorieTarget
@@ -149,7 +167,7 @@ export default function MenuAnalysisScreen() {
       const data = await response.json();
       console.log('Menu analysis received successfully');
       setAnalysis(data);
-    } catch (error) {
+    } catch (error: any) {
       console.error('Error analyzing menu:', error);
       Alert.alert(
         'Analysis Failed',
@@ -159,6 +177,39 @@ export default function MenuAnalysisScreen() {
       setLoading(false);
     }
   };
+
+  const storeRecommendation = async (data: any) => {
+    if (!auth.currentUser) return;
+
+    try {  
+        // Determine meal type based on the current time
+        const currentHour = new Date().getHours();
+        let mealType: 'breakfast' | 'lunch' | 'dinner';
+        if (currentHour < 11) {
+          mealType = 'breakfast';
+        } else if (currentHour < 17) {
+          mealType = 'lunch';
+        } else {
+          mealType = 'dinner';
+        }
+
+        // Extract recommendation from analysis data
+        const recommendation = data?.menu_recommendations?.recommendations || 'No specific recommendation';
+
+        // Store the recommendation in the user's recommendations subcollection
+
+        const recommendationsRef = collection(firestore, `Users/${auth.currentUser.uid}/recommendations`);
+        await addDoc(recommendationsRef, {
+          recommendation,
+          recommendedAt: new Date(),
+          mealType,
+        });
+        console.log('Recommendation stored successfully in Firestore.');
+    } catch (error) {
+      console.error('Error storing recommendation:', error);
+    }
+  };
+
 
   // Helper function to safely render text
   const safeRenderText = (text: any): string => {
@@ -175,9 +226,7 @@ export default function MenuAnalysisScreen() {
   };
 
   // Render recommendations with safety checks
-// Update the renderRecommendations function to better handle dish names:
-
-const renderRecommendations = () => {
+  const renderRecommendations = () => {
     // Check for error message first
     if (analysis?.menu_recommendations?.error) {
       return (
@@ -365,61 +414,6 @@ const renderRecommendations = () => {
       </ThemedView>
       
       <ThemedView style={styles.buttonContainer}>
-        <Button
-          title="My Preferences"
-          icon={{ name: 'sliders', type: 'font-awesome', color: 'white', size: 18 }}
-          onPress={() => setShowPreferences(!showPreferences)}
-          buttonStyle={{ backgroundColor: showPreferences ? '#2ecc71' : '#3498db' }}
-        />
-      </ThemedView>
-      
-      {showPreferences && (
-        <ThemedView style={styles.preferencesContainer}>
-          <ThemedText style={styles.preferencesTitle}>Dietary Restrictions</ThemedText>
-          
-          {dietOptions.map((option) => (
-            <CheckBox
-              key={option.value}
-              title={option.title}
-              checked={dietaryRestrictions.includes(option.value)}
-              onPress={() => toggleDietRestriction(option.value)}
-              containerStyle={styles.checkboxContainer}
-            />
-          ))}
-          
-          <ThemedText style={styles.preferencesTitle}>Health Goal</ThemedText>
-          <View style={styles.radioGroup}>
-            {['weight loss', 'balanced', 'muscle gain'].map((goal) => (
-              <CheckBox
-                key={goal}
-                title={goal.charAt(0).toUpperCase() + goal.slice(1)}
-                checked={healthGoal === goal}
-                onPress={() => setHealthGoal(goal)}
-                checkedIcon="dot-circle-o"
-                uncheckedIcon="circle-o"
-                containerStyle={styles.checkboxContainer}
-              />
-            ))}
-          </View>
-          
-          <ThemedText style={styles.preferencesTitle}>Calorie Target</ThemedText>
-          <View style={styles.radioGroup}>
-            {['low', 'moderate', 'high'].map((cals) => (
-              <CheckBox
-                key={cals}
-                title={cals.charAt(0).toUpperCase() + cals.slice(1)}
-                checked={calorieTarget === cals}
-                onPress={() => setCalorieTarget(cals)}
-                checkedIcon="dot-circle-o"
-                uncheckedIcon="circle-o"
-                containerStyle={styles.checkboxContainer}
-              />
-            ))}
-          </View>
-        </ThemedView>
-      )}
-      
-      <ThemedView style={styles.buttonContainer}>
         <Button 
           title="Take Photo" 
           onPress={takePhoto} 
@@ -455,10 +449,7 @@ const renderRecommendations = () => {
       )}
       {analysis && (
         <ThemedView style={styles.resultsContainer}>
-            <ThemedText type="subtitle" style={styles.resultsTitle}>Menu Recommendations</ThemedText>
-            
-            {/* Remove the Detected Menu Items section entirely */}
-            
+            <ThemedText type="subtitle" style={styles.resultsTitle}>Menu Recommendations</ThemedText>          
             {/* Recommendations */}
             {analysis.menu_recommendations && (
             <ThemedView style={styles.section}>
@@ -469,6 +460,18 @@ const renderRecommendations = () => {
             
             {/* Items to avoid */}
             {renderItemsToAvoid()}
+            {/* Store the recommendation */}
+            <Button
+                title="Save Recommendation"
+                color={'forestgreen'}
+                onPress={() => {
+                    storeRecommendation(analysis);
+                    setAnalysis(null);
+                    setImage(null);
+                }}
+                buttonStyle={styles.analyzeButton}
+                containerStyle={{ marginTop: 16 }}
+            />
         </ThemedView>
         )}
     </ScrollView>
