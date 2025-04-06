@@ -12,6 +12,7 @@ export default function HomeScreen() {
   const [loading, setLoading] = useState(false)
   const [session, setSession] = useState<Session | null>(null)
   const [isLoggedIn, signedIn] = useState(false)
+
   useEffect(() => {
     supabase.auth.getSession().then(({ data: { session } }) => {
       setSession(session)
