@@ -198,7 +198,7 @@ export default function HomeScreen() {
               leftIcon={{ type: 'font-awesome', name: 'envelope' }}
               onChangeText={setEmail}
               value={email}
-              placeholder="email@address.com"
+              placeholder="foodhack@gmail.com"
               autoCapitalize={'none'}
             />
           </View>
@@ -247,7 +247,7 @@ export default function HomeScreen() {
               leftIcon={{ type: 'font-awesome', name: 'envelope' }}
               onChangeText={setEmail}
               value={email}
-              placeholder="email@address.com"
+              placeholder="foodhack@gmail.com"
               autoCapitalize={'none'}
             />
           </View>
@@ -265,7 +265,7 @@ export default function HomeScreen() {
           <View style={[styles.verticallySpaced, styles.mt20]}>
             <Button 
               title="Sign In" 
-              disabled={loading} 
+              disabled={loading} color={'forestgreen'}
               onPress={signInWithEmail} 
             />
           </View>
