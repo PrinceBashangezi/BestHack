@@ -549,7 +549,7 @@ const styles = StyleSheet.create({
     borderRadius: 8,
   },
   cameraButtonStyle: {
-    backgroundColor: '#0a7ea4',
+    backgroundColor: 'forestgreen',
     flex: 1,
     marginRight: 8,
   },
