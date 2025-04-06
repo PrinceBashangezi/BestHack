@@ -59,7 +59,6 @@ export default function SettingsScreen() {
             });
           }
         }, (error) => {
-          console.error("Error fetching profile:", error);
         });
         unsubscribeRef.current = actualUnsubscribe;
       }

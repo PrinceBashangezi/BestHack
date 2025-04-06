@@ -57,8 +57,8 @@ export default function LoginScreen() {
       
       // Show health information form after successful signup
       setShowHealthInfo(true)
-    } catch (error) {
-      Alert.alert('Error', 'Failed to create account')
+    } catch (error: any) {
+      Alert.alert('Error', error.message)
       setLoading(false)
     }
   }
@@ -113,7 +113,7 @@ export default function LoginScreen() {
           />
           <TextInput
             style={styles.input}
-            placeholder="Enter your height (e.g., 5'9\"
+            placeholder="Enter your height (e.g., 5'9)"
             placeholderTextColor="#888"
             value={height}
             onChangeText={setHeight} // Correct usage of setState
@@ -138,9 +138,9 @@ export default function LoginScreen() {
             style={styles.input}
             placeholder="Your daily calorie target"
             placeholderTextColor="#888"
-            multiline
-            value={dietaryRestrictions}
-            onChangeText={setDietaryRestrictions} // Correct usage of setState
+             keyboardType="numeric"
+            value={dailyCalorieTarget}
+            onChangeText={setDailyCalorieTarget} // Correct usage of setState
           />
           <Button 
             title="Save Information"
