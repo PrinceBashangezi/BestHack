@@ -2,25 +2,21 @@ import { Tabs } from 'expo-router';
 import React from 'react';
 import { Ionicons } from '@expo/vector-icons';
 import { useEffect, useState } from 'react';
-import { auth } from '../supabase';
-import { onAuthStateChanged } from 'firebase/auth';
+import { onAuthStateChanged, getAuth } from 'firebase/auth';
 
 export default function TabLayout() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-
   useEffect(() => {
-    // Listen for authentication state changes
-    const unsubscribeAuth = onAuthStateChanged(auth, async (user) => {
+    const auth = getAuth();  
+    const unsubscribeAuth = onAuthStateChanged(auth, (user) => {
       setIsLoggedIn(!!user);
     });
-    unsubscribeAuth();
-    // Cleanup listeners on unmount
+    // Cleanup both auth and notification listeners on unmount
     return () => {
-      unsubscribeAuth();
+      unsubscribeAuth(); // Unsubscribe from auth state listener
     };
-  }, []);
-
+  }, []); // Empty dependency array since auth and firestore are stable
 
   const tabScreenOptions = {
     tabBarActiveTintColor: 'black',
@@ -37,16 +33,33 @@ export default function TabLayout() {
   return (
     <Tabs
       screenOptions={ tabScreenOptions }>
-      <Tabs.Screen
+
+     <Tabs.Screen
         name="index"
         options={{
-          title: 'Home',
+          headerShown: true,
+          tabBarLabel: 'Home',
           headerTitle: 'FoodHack',
           tabBarIcon: ({ focused, color }) => (
             <Ionicons name={focused ? "home-sharp" : "home-outline"} color={color} size={30} />
           ),
+          href: isLoggedIn ? null : '/(tabs)', // Hide when logged in
         }}
       />
+
+      <Tabs.Screen
+        name="homepage"
+        options={{
+          headerShown: true,
+          tabBarLabel: 'Home',
+          headerTitle: 'FoodHack',
+          tabBarIcon: ({ focused, color }) => (
+            <Ionicons name={focused ? "home-sharp" : "home-outline"} color={color} size={30} />
+          ),
+          href: isLoggedIn ? '/homepage' : null, // Show only when logged in
+        }}
+      />
+
       <Tabs.Screen
         name="analyze"
         options={{
@@ -55,9 +68,10 @@ export default function TabLayout() {
           tabBarIcon: ({ focused, color }) => (
             <Ionicons name={focused ? "camera" : "camera-outline"} color={color} size={28} />
           ),
-          href: !isLoggedIn ? null : '/anylyze', // Hide when logged in
+          href: !isLoggedIn ? null : '/analyze', // Hide when logged in
         }}
       />
+
       <Tabs.Screen
         name="menu"
         options={{
@@ -69,6 +83,7 @@ export default function TabLayout() {
           href: !isLoggedIn ? null : '/menu', // Hide when logged in
         }}
       />
+      
       <Tabs.Screen
         name="explore"
         options={{
@@ -80,6 +95,7 @@ export default function TabLayout() {
           href: !isLoggedIn ? null : '/explore', // Hide when logged in
         }}
       />
+
       <Tabs.Screen
         name="settings"
         options={{
@@ -90,6 +106,7 @@ export default function TabLayout() {
           href: !isLoggedIn ? null : '/settings', // Hide when logged in
         }}
       />
+
     </Tabs>
   );
 }

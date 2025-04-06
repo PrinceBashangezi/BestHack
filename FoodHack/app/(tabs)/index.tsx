@@ -4,9 +4,10 @@ import { firestore, auth } from '../supabase'
 import { signInWithEmailAndPassword, createUserWithEmailAndPassword } from "firebase/auth";
 import { Button, Input } from '@rneui/themed'
 import { useEffect } from 'react'
-import { setDoc, doc, query, collection, orderBy, getDocs, limit } from "firebase/firestore"
+import { setDoc, doc } from "firebase/firestore"
+import { useRouter } from 'expo-router'
 
-export default function HomeScreen() {
+export default function LoginScreen() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
@@ -17,50 +18,25 @@ export default function HomeScreen() {
   const [dietaryRestrictions, setDietaryRestrictions] = useState('')
   const [healthGoals, setHealthGoals] = useState('')
   const [loading, setLoading] = useState(false)
-  const [isLoggedIn, setIsLoggedIn] = useState(false)
   const [isSigningUp, setIsSigningUp] = useState(false)
   const [showHealthInfo, setShowHealthInfo] = useState(false)
-  const [latestMeal, setLatestMeal] = useState<any>(null)
+  const router = useRouter()
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => async () => {
       if (user) {
-        setIsLoggedIn(true)
-        await fetchLatestMeal(user.uid)
-      } else {
-        setIsLoggedIn(false)
+        router.navigate('/homepage')
       }
     })
     return () => unsubscribe()
   }, [])
 
-  async function fetchLatestMeal(userId: string) {
-    try {
-      const mealsRef = collection(firestore, "Users", userId, "mealsTaken")
-      const q = query(mealsRef, orderBy("takenAt", "desc"), limit(1))
-      const querySnapshot = await getDocs(q)
-      
-      if (!querySnapshot.empty) {
-        const doc = querySnapshot.docs[0]
-        setLatestMeal({
-          id: doc.id,
-          ...doc.data()
-        })
-      } else {
-        setLatestMeal(null)
-      }
-    } catch (error) {
-      console.error("Error fetching latest meal:", error)
-    }
-  }
-
   async function signInWithEmail() {
     setLoading(true)
     try {
       await signInWithEmailAndPassword(auth, email, password)
-      setIsLoggedIn(true)
-    } catch (error) {
-      Alert.alert('Error', 'Invalid email or password')
+    } catch (error: any) {
+      Alert.alert('Error', error.message)
     } finally {
       setLoading(false)
     }
@@ -101,10 +77,9 @@ export default function HomeScreen() {
           healthGoals: healthGoals
         }
       });
-      setIsLoggedIn(true)
       setShowHealthInfo(false)
-    } catch (error) {
-      Alert.alert('Error', 'Failed to save health information')
+    } catch (error: any) {
+      Alert.alert('Error', error.message)
     } finally {
       setLoading(false)
     }
@@ -113,26 +88,7 @@ export default function HomeScreen() {
 
   return (
     <View style={styles.container}>
-      {isLoggedIn ? (
-        <View>
-          <Text>Welcome {firstName || 'User'}!</Text>
-
-          <View style={styles.section}>
-            <Text style={styles.sectionTitle}>Your Latest Meal</Text>
-            {latestMeal ? (
-              <View style={styles.mealCard}>
-                <Text style={styles.mealType}>{latestMeal.mealType}</Text>
-                <Text style={styles.mealDetails}>{latestMeal.mealTaken}</Text>
-                <Text style={styles.mealTime}>
-                  {new Date(latestMeal.takenAt?.seconds * 1000).toLocaleString()}
-                </Text>
-              </View>
-            ) : (
-              <Text style={styles.noMealsText}>No meals recorded yet</Text>
-            )}
-          </View>
-        </View>
-      ) : showHealthInfo ? (
+      { showHealthInfo ? (
         <View>
           <Text style={styles.title}>Health Information</Text>
           <View style={styles.verticallySpaced}>
@@ -177,8 +133,8 @@ export default function HomeScreen() {
             />
           </View>
           <Button 
-            title="Save Information" 
-            disabled={loading} 
+            title="Save Information"
+            color={'forestgreen'}
             onPress={saveHealthInfo} 
           />
         </View>
@@ -300,44 +256,5 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     marginBottom: 20,
     textAlign: 'center',
-  },
-  signOutButton: {
-    marginTop: 20,
-    backgroundColor: 'red',
-  },
-  section: {
-    marginBottom: 30,
-  },
-  sectionTitle: {
-    fontSize: 18,
-    fontWeight: '600',
-    marginBottom: 10,
-  },
-  mealCard: {
-    backgroundColor: '#f8f8f8',
-    padding: 15,
-    borderRadius: 8,
-    marginBottom: 15,
-  },
-  mealType: {
-    fontSize: 16,
-    fontWeight: 'bold',
-    color: '#333',
-  },
-  mealDetails: {
-    fontSize: 14,
-    marginVertical: 5,
-    color: '#555',
-  },
-  mealTime: {
-    fontSize: 12,
-    color: '#777',
-    fontStyle: 'italic',
-  },
-  noMealsText: {
-    fontSize: 14,
-    color: '#888',
-    textAlign: 'center',
-    marginVertical: 10,
   },
 })

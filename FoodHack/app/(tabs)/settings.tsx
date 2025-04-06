@@ -21,10 +21,21 @@ interface SettingSection {
   data: SettingItem[];
 }
 
+interface Profile {
+  email: string;
+  username: string;
+  age: number;
+  height: number;
+  weight: number; 
+  diataryRestrictions: string;
+  healthGoals: string;
+};
+
 export default function SettingsScreen() {
   const [username, setUsername] = useState<string | null>(null);
   const unsubscribeRef = useRef<(() => void) | null>(null);
   const router = useRouter();
+  const profile = useState<Profile | null>(null);
 
   useEffect(() => {
     const fetchUsername = async () => {
@@ -53,28 +64,9 @@ export default function SettingsScreen() {
   }, []);
 
   const handleLogout = async () => {
-    const user = auth.currentUser;
-    if (!user) {
-      Alert.alert("Error", "No user is logged in.");
-      return;
-    }
-    const userRef = doc(firestore, 'users', user.uid);
-    try {
-      await updateDoc(userRef, {
-        discoverable: false,
-      });
-    } catch (error: any) {
-      if (error.code === 'permission-denied') {
-        Alert.alert("Error", "You do not have permission to update your profile.");
-      } else {
-        Alert.alert("Error", "There was an issue updating your profile. You will still be logged out.");
-      }
-    }
-    if (unsubscribeRef) {
-      unsubscribeRef; // Stop the listener
-    }
     try {
       await signOut(auth);
+      router.navigate('/(tabs)');
     } catch (error) {
       Alert.alert("Error", "There was an issue logging you out. Please try again.");
     }
@@ -116,6 +108,7 @@ export default function SettingsScreen() {
               await deleteDoc(userRef);
               await deleteUser(user);
               await signOut(auth);
+              router.navigate('/(tabs)');
               
               Alert.alert("Success", "Your account has been deleted.");
             } catch (error: any) {
