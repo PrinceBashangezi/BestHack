@@ -1,0 +1,85 @@
+{
+    "vision_analysis": {
+        "tags": [
+            {
+                "name": "human face",
+                "confidence": 0.9991097450256348
+            },
+            {
+                "name": "person",
+                "confidence": 0.997620701789856
+            },
+            {
+                "name": "clothing",
+                "confidence": 0.9908701181411743
+            },
+            {
+                "name": "indoor",
+                "confidence": 0.9440271258354187
+            },
+            {
+                "name": "selfie",
+                "confidence": 0.9411303400993347
+            },
+            {
+                "name": "wall",
+                "confidence": 0.9042483568191528
+            },
+            {
+                "name": "eyebrow",
+                "confidence": 0.9035603404045105
+            },
+            {
+                "name": "jacket",
+                "confidence": 0.8872195482254028
+            },
+            {
+                "name": "chin",
+                "confidence": 0.8729643821716309
+            },
+            {
+                "name": "jaw",
+                "confidence": 0.8659594058990479
+            },
+            {
+                "name": "cool",
+                "confidence": 0.8576104640960693
+            },
+            {
+                "name": "ceiling",
+                "confidence": 0.5559484958648682
+            },
+            {
+                "name": "wearing",
+                "confidence": 0.542744517326355
+            }
+        ],
+        "objects": [
+            {
+                "object": "person",
+                "confidence": 0.94
+            }
+        ],
+        "description": {
+            "captions": [
+                {
+                    "text": "a man with a black jacket",
+                    "confidence": 0.21981140971183777
+                }
+            ],
+            "tags": [
+                "person",
+                "man",
+                "clothing",
+                "indoor",
+                "posing"
+            ]
+        },
+        "read_text": "What's BISCONO"
+    },
+    "menu_recommendations": {
+        "error": "No menu detected in the image. Please take a photo of a food menu.",
+        "recommendations": [],
+        "items_to_avoid": []
+    }
+}

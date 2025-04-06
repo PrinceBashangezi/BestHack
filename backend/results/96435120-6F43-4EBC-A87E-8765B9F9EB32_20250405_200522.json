@@ -1,0 +1,86 @@
+{
+    "vision_analysis": {
+        "tags": [
+            {
+                "name": "text",
+                "confidence": 0.9999991655349731
+            },
+            {
+                "name": "screenshot",
+                "confidence": 0.9538478255271912
+            },
+            {
+                "name": "menu",
+                "confidence": 0.9383711814880371
+            },
+            {
+                "name": "font",
+                "confidence": 0.9136849641799927
+            },
+            {
+                "name": "number",
+                "confidence": 0.8887989521026611
+            }
+        ],
+        "objects": [],
+        "description": {
+            "captions": [
+                {
+                    "text": "text",
+                    "confidence": 0.7112810611724854
+                }
+            ],
+            "tags": [
+                "text"
+            ]
+        },
+        "read_text": "MENU APPETIZERS PRIX FIXE Shrimp Remoulade/Shrimp Cocktail . . . 16.00 Three Courses: 45 Spicy Lobster . 19.00 First Course: Lobster Bisque Baked Escargot . . 16.00 Entr\u00e9e: Cornish Game Hen, Seared Ahi Tuna . 17.00 Grilled Salmon or 12 oz Sirloin Prosciutto Wrapped Mozzarella . . 14.00 Dessert: Bananas Foster STEAK CUTS SALADS AND SOUPS Filet Mignon, 8 ounce . 38.00 Spinach Salad 9.50 Apples, goat cheese, apple cider dressing Filet Mignon, 12 ounce . 49.00 Caprese Salad 7.50 Rib Eye Steak, 18 ounce . 39.00 Ripe tomato with fresh mozzarella and basil Porterhouse for Two 40.00 French Onion Soup . 5.00 000"
+    },
+    "menu_recommendations": {
+        "recommendations": [
+            {
+                "item": "Seared Ahi Tuna",
+                "reason": "High in protein and omega-3 fatty acids, moderate in calories, and aligns with a balanced diet.",
+                "healthier_modifications": "Request minimal oil in preparation and pair with steamed vegetables if available."
+            },
+            {
+                "item": "Grilled Salmon",
+                "reason": "Rich in omega-3 fatty acids and protein, supports heart health and fits a moderate calorie target.",
+                "healthier_modifications": "Ask for no butter or sauce, and pair with a side of vegetables."
+            },
+            {
+                "item": "Spinach Salad (Apples, goat cheese, apple cider dressing)",
+                "reason": "Provides leafy greens, fiber, and healthy fats from goat cheese, with a lighter dressing option.",
+                "healthier_modifications": "Request dressing on the side and consider reducing the amount of goat cheese for lower calorie intake."
+            },
+            {
+                "item": "Caprese Salad (Ripe tomato with fresh mozzarella and basil)",
+                "reason": "Fresh vegetables and moderate fat content from mozzarella, offering a balanced option.",
+                "healthier_modifications": "Request less mozzarella or opt for a smaller portion to manage calorie intake."
+            }
+        ],
+        "items_to_avoid": [
+            {
+                "item": "Porterhouse for Two",
+                "reason": "High in calories and saturated fats, not ideal for a moderate calorie target."
+            },
+            {
+                "item": "Rib Eye Steak, 18 ounce",
+                "reason": "Large portion size and high fat content may exceed calorie goals."
+            },
+            {
+                "item": "Bananas Foster",
+                "reason": "Likely high in sugar and calories, not suitable for a balanced, moderate-calorie diet."
+            },
+            {
+                "item": "Baked Escargot",
+                "reason": "Often prepared with butter, which can add unnecessary calories and fats."
+            },
+            {
+                "item": "Prosciutto Wrapped Mozzarella",
+                "reason": "High in sodium and saturated fats due to processed meat and cheese."
+            }
+        ],
+        "menu_detected": true
+    }
+}

@@ -19,7 +19,7 @@ import { firestore, auth } from '../supabase';
 // Use the same API URL as in your analyze.tsx file
 const API_URL = Platform.OS === 'android' 
   ? 'http://10.0.2.2:5000/analyze_menu'  // Android emulator 
-  : 'https://cb5a-134-173-248-4.ngrok-free.app/analyze_menu'; // iOS simulator
+  : 'https://79ab-134-173-248-4.ngrok-free.app/analyze_menu'; // iOS simulator
 
 export default function MenuAnalysisScreen() {
   const [image, setImage] = useState<string | null>(null);

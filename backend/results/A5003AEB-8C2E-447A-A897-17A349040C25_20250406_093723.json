@@ -1,0 +1,101 @@
+{
+    "vision_analysis": {
+        "tags": [
+            {
+                "name": "snack",
+                "confidence": 0.9948362708091736
+            },
+            {
+                "name": "food",
+                "confidence": 0.9843432903289795
+            },
+            {
+                "name": "junk food",
+                "confidence": 0.9421250820159912
+            },
+            {
+                "name": "text",
+                "confidence": 0.9413028359413147
+            },
+            {
+                "name": "chip",
+                "confidence": 0.8939103484153748
+            },
+            {
+                "name": "convenience food",
+                "confidence": 0.8698623180389404
+            },
+            {
+                "name": "potato chip",
+                "confidence": 0.8476114869117737
+            },
+            {
+                "name": "indoor",
+                "confidence": 0.5986332893371582
+            }
+        ],
+        "objects": [
+            {
+                "object": "dining table",
+                "confidence": 0.522
+            }
+        ],
+        "description": {
+            "captions": [
+                {
+                    "text": "a bag of chips",
+                    "confidence": 0.5526776909828186
+                }
+            ],
+            "tags": [
+                "drink"
+            ]
+        },
+        "read_text": "PS Total Fat CHEDDAR & SOUR CREAM FLAVORED CALU PER P POTATO CHIPS See Nutrition Information for Total ES OZ. (42.5 g)"
+    },
+    "nutrition_analysis": {
+        "nutritional_analysis": {
+            "estimated_calories": {
+                "range": "150-300 kcal",
+                "notes": "Calories can vary based on brand, serving size, and flavorings. A typical 1-ounce (28g) serving of plain potato chips falls within this range."
+            },
+            "macronutrient_breakdown": {
+                "protein": "2-3 grams",
+                "carbohydrates": "15-20 grams",
+                "fat": "10-15 grams",
+                "notes": "Most of the fat is from unhealthy saturated and trans fats due to frying. Carbohydrates are primarily refined starches with minimal fiber."
+            },
+            "key_vitamins_and_minerals": {
+                "present": [
+                    "Potassium (small amounts from potatoes)",
+                    "Vitamin C (trace amounts from potatoes)",
+                    "Iron (fortified in some brands)"
+                ],
+                "notes": "Processing and frying significantly reduce the natural nutrients found in potatoes."
+            },
+            "health_benefits": {
+                "notes": "Minimal benefits. The potatoes used in chips provide some potassium, but the high processing negates most nutritional value. Convenience and taste are the primary 'benefits'."
+            },
+            "potential_allergens_or_concerns": {
+                "common_allergens": [
+                    "Dairy (if cheese-flavored)",
+                    "Gluten (if wheat-based seasonings are used)",
+                    "Soy (often used in frying oils)"
+                ],
+                "dietary_concerns": [
+                    "High sodium content (can exceed 10% DV per serving)",
+                    "Unhealthy fats (linked to cardiovascular risks)",
+                    "Low satiety (easy to overconsume)"
+                ]
+            },
+            "healthier_recommendations": [
+                "Choose baked or air-popped chips to reduce fat content",
+                "Look for low-sodium or unsalted versions",
+                "Pair with a protein source (e.g., Greek yogurt dip) to balance macros",
+                "Portion control - pre-portion into small bowls instead of eating from the bag",
+                "Consider homemade veggie chips (sweet potato, kale) as alternatives",
+                "Opt for whole-food snacks like nuts or fresh vegetables when possible"
+            ]
+        }
+    }
+}

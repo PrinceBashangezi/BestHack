@@ -19,7 +19,7 @@ import { firestore, auth } from '../supabase';
 // Updated API URL - you might need to adjust this based on your network setup
 const API_URL = Platform.OS === 'android' 
   ? 'http://10.0.2.2:5000/upload'  // Android emulator 
-  : 'https://cb5a-134-173-248-4.ngrok-free.app/upload'; // iOS simulator
+  : 'https://79ab-134-173-248-4.ngrok-free.app/upload'; // iOS simulator
 
 export default function FoodAnalysisScreen() {
   const [image, setImage] = useState<string | null>(null);

@@ -1,0 +1,45 @@
+{
+    "vision_analysis": {
+        "tags": [
+            {
+                "name": "cable",
+                "confidence": 0.9078652858734131
+            },
+            {
+                "name": "gadget",
+                "confidence": 0.8713654279708862
+            },
+            {
+                "name": "electronic device",
+                "confidence": 0.8651400208473206
+            },
+            {
+                "name": "floor",
+                "confidence": 0.7696048617362976
+            },
+            {
+                "name": "indoor",
+                "confidence": 0.7509545683860779
+            }
+        ],
+        "objects": [],
+        "description": {
+            "captions": [
+                {
+                    "text": "a blue and white computer mouse",
+                    "confidence": 0.31250011920928955
+                }
+            ],
+            "tags": [
+                "floor",
+                "indoor"
+            ]
+        },
+        "read_text": "COLLEGE 1887"
+    },
+    "menu_recommendations": {
+        "error": "No menu detected in the image. Please take a photo of a food menu.",
+        "recommendations": [],
+        "items_to_avoid": []
+    }
+}

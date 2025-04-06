@@ -1,0 +1,75 @@
+{
+    "vision_analysis": {
+        "tags": [
+            {
+                "name": "fruit",
+                "confidence": 0.9860509634017944
+            },
+            {
+                "name": "natural foods",
+                "confidence": 0.9557696580886841
+            },
+            {
+                "name": "food",
+                "confidence": 0.9438014030456543
+            },
+            {
+                "name": "apple",
+                "confidence": 0.9371123313903809
+            },
+            {
+                "name": "mcintosh",
+                "confidence": 0.926146388053894
+            },
+            {
+                "name": "produce",
+                "confidence": 0.9225375652313232
+            },
+            {
+                "name": "local food",
+                "confidence": 0.8789116144180298
+            },
+            {
+                "name": "accessory fruit",
+                "confidence": 0.8432478904724121
+            },
+            {
+                "name": "indoor",
+                "confidence": 0.6814543604850769
+            }
+        ],
+        "objects": [
+            {
+                "object": "Apple",
+                "confidence": 0.72
+            }
+        ],
+        "description": {
+            "captions": [
+                {
+                    "text": "a close up of an apple",
+                    "confidence": 0.521492063999176
+                }
+            ],
+            "tags": [
+                "apple",
+                "indoor",
+                "fruit",
+                "sitting",
+                "orange"
+            ]
+        },
+        "read_text": ""
+    },
+    "menu_recommendations": {
+        "recommendations": [
+            {
+                "menu_item": "apple",
+                "reason": "Apples are a nutritious fruit that align with a balanced diet, providing fiber, vitamins, and moderate calories.",
+                "healthier_modifications": "Enjoy it with the skin on for added fiber and nutrients."
+            }
+        ],
+        "items_to_avoid": [],
+        "menu_detected": true
+    }
+}

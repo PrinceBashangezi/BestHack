@@ -1,0 +1,160 @@
+{
+    "vision_analysis": {
+        "tags": [
+            {
+                "name": "food",
+                "confidence": 0.9977957010269165
+            },
+            {
+                "name": "tableware",
+                "confidence": 0.9758197069168091
+            },
+            {
+                "name": "plate",
+                "confidence": 0.9561509490013123
+            },
+            {
+                "name": "ingredient",
+                "confidence": 0.9517177939414978
+            },
+            {
+                "name": "lemon",
+                "confidence": 0.9499711990356445
+            },
+            {
+                "name": "fork",
+                "confidence": 0.9451620578765869
+            },
+            {
+                "name": "cuisine",
+                "confidence": 0.9424437880516052
+            },
+            {
+                "name": "kitchen utensil",
+                "confidence": 0.9187963604927063
+            },
+            {
+                "name": "meal",
+                "confidence": 0.9184525012969971
+            },
+            {
+                "name": "table",
+                "confidence": 0.917603611946106
+            },
+            {
+                "name": "dish",
+                "confidence": 0.9112976789474487
+            },
+            {
+                "name": "recipe",
+                "confidence": 0.909205436706543
+            },
+            {
+                "name": "garnish",
+                "confidence": 0.9065872430801392
+            },
+            {
+                "name": "dishware",
+                "confidence": 0.9060550928115845
+            },
+            {
+                "name": "leaf vegetable",
+                "confidence": 0.8939628601074219
+            },
+            {
+                "name": "indoor",
+                "confidence": 0.8932006359100342
+            },
+            {
+                "name": "silverware",
+                "confidence": 0.8882660865783691
+            },
+            {
+                "name": "staple food",
+                "confidence": 0.87039715051651
+            },
+            {
+                "name": "gremolata",
+                "confidence": 0.8689770698547363
+            },
+            {
+                "name": "platter",
+                "confidence": 0.8530293703079224
+            },
+            {
+                "name": "salad",
+                "confidence": 0.7107163667678833
+            },
+            {
+                "name": "vegetable",
+                "confidence": 0.7091119289398193
+            }
+        ],
+        "objects": [
+            {
+                "object": "Broccoli",
+                "confidence": 0.552
+            },
+            {
+                "object": "Fork",
+                "confidence": 0.642
+            }
+        ],
+        "description": {
+            "captions": [
+                {
+                    "text": "a plate of food",
+                    "confidence": 0.4517335891723633
+                }
+            ],
+            "tags": [
+                "table",
+                "food",
+                "plate",
+                "indoor",
+                "meal",
+                "vegetable"
+            ]
+        },
+        "read_text": ""
+    },
+    "nutrition_analysis": {
+        "nutritional_analysis": {
+            "estimated_calories": {
+                "range": "150-300 kcal",
+                "notes": "Calorie estimate is based on the presence of broccoli, salad, lemon, and gremolata. The exact amount depends on portion sizes and dressing used."
+            },
+            "macronutrient_breakdown": {
+                "protein": "5-10g",
+                "carbohydrates": "20-30g",
+                "fats": "5-15g",
+                "notes": "Primary sources of carbs are from vegetables like broccoli and salad greens. Fats may come from any dressing or garnish like gremolata (which often contains olive oil). Protein is likely minimal unless a protein source (e.g., nuts, cheese) is included but not listed."
+            },
+            "key_vitamins_and_minerals": {
+                "vitamin_C": "High (from broccoli, lemon, and leafy greens)",
+                "vitamin_K": "High (from leafy greens and broccoli)",
+                "folate": "Moderate (from leafy vegetables)",
+                "potassium": "Moderate (from broccoli and greens)",
+                "fiber": "High (from vegetables)",
+                "notes": "Leafy greens and broccoli are nutrient-dense, providing antioxidants and essential micronutrients."
+            },
+            "health_benefits": {
+                "digestive_health": "High fiber content supports gut health.",
+                "immune_support": "Vitamin C from lemon and broccoli boosts immunity.",
+                "anti-inflammatory": "Leafy greens and lemon have anti-inflammatory properties.",
+                "low_calorie": "The meal is light and suitable for weight management.",
+                "heart_health": "Low in saturated fats and rich in heart-healthy nutrients."
+            },
+            "potential_allergens_or_concerns": {
+                "allergens": "Possible allergens could include nuts (if gremolata contains them) or dairy (if cheese is present but not listed).",
+                "dietary_concerns": "Low protein content may not be sufficient for a balanced meal. Those on low-fiber diets might need to moderate portions."
+            },
+            "recommendations_for_a_healthier_meal": {
+                "add_protein": "Include grilled chicken, tofu, beans, or quinoa to make it more balanced.",
+                "healthy_fats": "Add avocado or a sprinkle of nuts/seeds for unsaturated fats.",
+                "dressing_control": "Opt for olive oil and lemon juice instead of creamy dressings.",
+                "portion_awareness": "Ensure the portion is satisfying enough to avoid overeating later."
+            }
+        }
+    }
+}

@@ -4,7 +4,7 @@ import os
 import requests
 import json
 import datetime
-from infer import analyze_image  # Remove the dot (.) from the import
+from .infer import analyze_image 
 from PIL import Image
 import io
 

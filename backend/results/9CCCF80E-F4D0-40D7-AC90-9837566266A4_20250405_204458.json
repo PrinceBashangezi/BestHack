@@ -1,0 +1,101 @@
+{
+    "vision_analysis": {
+        "tags": [
+            {
+                "name": "text",
+                "confidence": 0.9999898672103882
+            },
+            {
+                "name": "menu",
+                "confidence": 0.9909215569496155
+            },
+            {
+                "name": "food",
+                "confidence": 0.9076859951019287
+            },
+            {
+                "name": "vegetable",
+                "confidence": 0.9074937105178833
+            },
+            {
+                "name": "meal",
+                "confidence": 0.8995179533958435
+            },
+            {
+                "name": "poster",
+                "confidence": 0.8727492094039917
+            }
+        ],
+        "objects": [],
+        "description": {
+            "captions": [
+                {
+                    "text": "text",
+                    "confidence": 0.36030811071395874
+                }
+            ],
+            "tags": [
+                "text"
+            ]
+        },
+        "read_text": "MAIN COURSE Cheeseburger $34 Cheese sandwich $22 Chicken burgers $23 Spicy chicken $33 Hot dog $24 APPETIZERS Fruit Salad $13 Cocktails $12 Nuggets $14 Sandwich $13 French Fries $15 BEVERAGES Milk Shake $3 Iced Tea $2 Orange Juice $4 Lemon Tea $3 Coffee 123 Anywhere St ., Any City"
+    },
+    "nutrition_analysis": {
+        "nutritional_analysis": {
+            "estimated_calories": {
+                "range": "300-600 kcal",
+                "notes": "The calorie range is broad due to uncertainty about portion sizes and preparation methods (e.g., oil used in cooking)."
+            },
+            "macronutrient_breakdown": {
+                "protein": {
+                    "range": "10-25g",
+                    "notes": "Protein content depends on the presence of items like beans, tofu, or meat in the meal."
+                },
+                "carbohydrates": {
+                    "range": "40-80g",
+                    "notes": "Carbs likely come from any grains (rice, bread) or starchy vegetables in the meal."
+                },
+                "fat": {
+                    "range": "10-30g",
+                    "notes": "Fat content varies based on cooking methods (e.g., frying vs. steaming) and added sauces."
+                }
+            },
+            "key_vitamins_and_minerals": {
+                "vitamins": [
+                    "Vitamin A (from leafy greens or colorful vegetables)",
+                    "Vitamin C (from fresh vegetables like bell peppers or tomatoes)",
+                    "Vitamin K (from leafy greens)",
+                    "Folate (from beans or leafy greens)"
+                ],
+                "minerals": [
+                    "Potassium (from vegetables like spinach or broccoli)",
+                    "Iron (from leafy greens or legumes)",
+                    "Magnesium (from whole grains or leafy greens)",
+                    "Calcium (from fortified foods or leafy greens)"
+                ],
+                "notes": "Specific vitamins and minerals depend on the exact vegetables and other ingredients present."
+            },
+            "health_benefits": [
+                "High fiber content from vegetables and whole grains supports digestion and satiety.",
+                "Rich in antioxidants (from colorful vegetables) which reduce inflammation.",
+                "Low in saturated fat if prepared without heavy sauces or frying.",
+                "May support heart health and weight management if portion-controlled."
+            ],
+            "potential_allergens_or_concerns": [
+                "Gluten (if meal includes wheat-based items like bread or pasta)",
+                "Dairy (if cheese or cream-based sauces are present)",
+                "Soy (if tofu or soy sauce is used)",
+                "Nuts (if garnishes like almonds or peanuts are included)",
+                "High sodium (if processed ingredients or sauces are used)"
+            ],
+            "healthier_recommendations": [
+                "Opt for steaming or grilling instead of frying to reduce fat content.",
+                "Use herbs and spices instead of heavy sauces for flavor.",
+                "Include a lean protein source (e.g., grilled chicken, lentils) for balance.",
+                "Add more colorful vegetables to increase micronutrient diversity.",
+                "Choose whole grains (e.g., brown rice, quinoa) over refined grains.",
+                "Monitor portion sizes to avoid overeating even healthy foods."
+            ]
+        }
+    }
+}
