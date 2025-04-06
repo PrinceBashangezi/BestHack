@@ -1,0 +1,86 @@
+{
+    "vision_analysis": {
+        "tags": [
+            {
+                "name": "text",
+                "confidence": 0.9999112486839294
+            },
+            {
+                "name": "packaging and labeling",
+                "confidence": 0.8914710283279419
+            },
+            {
+                "name": "convenience food",
+                "confidence": 0.8546401262283325
+            },
+            {
+                "name": "indoor",
+                "confidence": 0.8503605127334595
+            },
+            {
+                "name": "floor",
+                "confidence": 0.8460150957107544
+            },
+            {
+                "name": "food",
+                "confidence": 0.8126264810562134
+            }
+        ],
+        "objects": [],
+        "description": {
+            "captions": [
+                {
+                    "text": "a bag of food",
+                    "confidence": 0.45588919520378113
+                }
+            ],
+            "tags": [
+                "text",
+                "indoor",
+                "floor"
+            ]
+        }
+    },
+    "nutrition_analysis": {
+        "nutritional_analysis": {
+            "estimated_calories": "300-600 kcal (varies widely based on specific product)",
+            "macronutrient_breakdown": {
+                "protein": "10-20g (often processed sources like soy or wheat)",
+                "carbohydrates": "40-80g (likely refined carbs, added sugars)",
+                "fat": "10-30g (may include unhealthy trans fats or high saturated fat)"
+            },
+            "key_vitamins_and_minerals": {
+                "vitamins": [
+                    "B vitamins (if fortified)",
+                    "Vitamin A (if artificially added)"
+                ],
+                "minerals": [
+                    "Iron (fortified)",
+                    "Sodium (high levels)",
+                    "Potassium (minimal)"
+                ]
+            },
+            "health_benefits": [
+                "Convenience and time-saving",
+                "Some fortified nutrients may address deficiencies",
+                "Long shelf life for emergency use"
+            ],
+            "potential_allergens_or_concerns": [
+                "Common allergens: Wheat, soy, dairy, nuts (check label)",
+                "High sodium content (risk for hypertension)",
+                "Artificial additives/preservatives",
+                "Low fiber content",
+                "Possible trans fats"
+            ],
+            "healthier_recommendations": [
+                "Pair with fresh vegetables or fruit to add nutrients/fiber",
+                "Choose low-sodium versions if available",
+                "Combine with a lean protein source (e.g. grilled chicken)",
+                "Look for whole grain options",
+                "Portion control - use as side dish rather than main meal",
+                "Check for allergen warnings if sensitive"
+            ]
+        },
+        "disclaimer": "Analysis is speculative due to limited information about the specific packaged food. Always check actual nutrition labels for accurate data."
+    }
+}

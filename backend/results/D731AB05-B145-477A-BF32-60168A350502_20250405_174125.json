@@ -1,0 +1,88 @@
+{
+    "vision_analysis": {
+        "tags": [
+            {
+                "name": "text",
+                "confidence": 0.9972659349441528
+            },
+            {
+                "name": "floor",
+                "confidence": 0.9433085918426514
+            },
+            {
+                "name": "snack",
+                "confidence": 0.8771730661392212
+            },
+            {
+                "name": "packaging and labeling",
+                "confidence": 0.8708440065383911
+            },
+            {
+                "name": "indoor",
+                "confidence": 0.8654842376708984
+            },
+            {
+                "name": "packing materials",
+                "confidence": 0.8475431203842163
+            },
+            {
+                "name": "label",
+                "confidence": 0.843449592590332
+            },
+            {
+                "name": "food",
+                "confidence": 0.6861479878425598
+            },
+            {
+                "name": "paper",
+                "confidence": 0.6081059575080872
+            }
+        ],
+        "objects": [],
+        "description": {
+            "captions": [
+                {
+                    "text": "a bag of candy",
+                    "confidence": 0.4251909852027893
+                }
+            ],
+            "tags": [
+                "text"
+            ]
+        }
+    },
+    "nutrition_analysis": {
+        "nutritional_analysis": {
+            "estimated_calories": {
+                "range": "200-300 calories per serving (varies by candy type and serving size)",
+                "notes": "Calories can vary widely depending on the type of candy (e.g., gummy vs. chocolate). Check the label for specifics."
+            },
+            "macronutrient_breakdown": {
+                "protein": "0-2g (minimal, unless candy contains nuts or dairy)",
+                "carbohydrates": "30-50g (primarily from sugars and refined carbs)",
+                "fat": "5-15g (varies; higher in chocolates, lower in gummies or hard candies)",
+                "notes": "Macronutrients are heavily skewed toward sugars and fats with minimal protein."
+            },
+            "key_vitamins_and_minerals": {
+                "present": "None significant (unless fortified)",
+                "notes": "Most candies lack meaningful vitamins/minerals. Dark chocolate may contain trace iron/magnesium."
+            },
+            "health_benefits": {
+                "candy": "Quick energy boost (from sugars), potential mood elevation (dopamine response)",
+                "dark_chocolate": "If present, may offer antioxidants (flavonoids) and minor heart health benefits",
+                "notes": "Benefits are limited and outweighed by high sugar content in most cases."
+            },
+            "allergens_dietary_concerns": {
+                "common_allergens": "Dairy (milk chocolate), soy (lecithin), nuts (peanuts, almonds), gluten (some candies)",
+                "dietary_concerns": "High glycemic index, artificial colors/flavors (potential sensitivities), not suitable for low-sugar diets",
+                "notes": "Always check the label for allergen warnings."
+            },
+            "healthier_recommendations": {
+                "portion_control": "Stick to a small serving (e.g., 1-2 pieces) to limit sugar intake",
+                "alternatives": "Pair with nuts or fruit for balance, or choose dark chocolate (70%+ cocoa) for less sugar",
+                "timing": "Consume with a meal to slow sugar absorption",
+                "general_advice": "Treat candy as an occasional indulgence, not a daily snack."
+            }
+        }
+    }
+}

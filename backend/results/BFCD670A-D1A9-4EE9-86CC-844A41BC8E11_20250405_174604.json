@@ -1,0 +1,53 @@
+{
+    "vision_analysis": {
+        "tags": [
+            {
+                "name": "text",
+                "confidence": 0.9996934533119202
+            },
+            {
+                "name": "indoor",
+                "confidence": 0.8666524887084961
+            },
+            {
+                "name": "floor",
+                "confidence": 0.8369311094284058
+            },
+            {
+                "name": "food",
+                "confidence": 0.7777044177055359
+            }
+        ],
+        "objects": [],
+        "description": {
+            "captions": [
+                {
+                    "text": "text",
+                    "confidence": 0.9772442579269409
+                }
+            ],
+            "tags": [
+                "text"
+            ]
+        }
+    },
+    "nutrition_analysis": {
+        "nutritional_analysis": {
+            "estimated_calories": "Unable to determine (provide a clear food description for accuracy)",
+            "macronutrient_breakdown": {
+                "protein": "Unknown",
+                "carbohydrates": "Unknown",
+                "fat": "Unknown"
+            },
+            "key_vitamins_and_minerals": "Unable to identify (specify food items for details)",
+            "health_benefits": "No specific foods detected for analysis",
+            "potential_allergens_or_concerns": "None identified (update with actual food items)",
+            "healthier_meal_recommendations": [
+                "Provide a clear description of the meal for tailored advice.",
+                "Include more vegetables for fiber and micronutrients.",
+                "Opt for lean proteins and whole grains if applicable.",
+                "Avoid processed foods if detected."
+            ]
+        }
+    }
+}

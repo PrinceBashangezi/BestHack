@@ -1,0 +1,100 @@
+{
+    "vision_analysis": {
+        "tags": [
+            {
+                "name": "text",
+                "confidence": 0.999873697757721
+            },
+            {
+                "name": "packaging and labeling",
+                "confidence": 0.8832437992095947
+            },
+            {
+                "name": "label",
+                "confidence": 0.8611537218093872
+            },
+            {
+                "name": "paper",
+                "confidence": 0.8525196313858032
+            },
+            {
+                "name": "food",
+                "confidence": 0.8517541885375977
+            },
+            {
+                "name": "indoor",
+                "confidence": 0.8144239783287048
+            },
+            {
+                "name": "floor",
+                "confidence": 0.6321556568145752
+            }
+        ],
+        "objects": [],
+        "description": {
+            "captions": [
+                {
+                    "text": "a package of candy",
+                    "confidence": 0.42589104175567627
+                }
+            ],
+            "tags": [
+                "text",
+                "indoor"
+            ]
+        }
+    },
+    "nutrition_analysis": {
+        "nutritional_analysis": {
+            "estimated_calories": {
+                "range": "200-300 calories per serving",
+                "notes": "Calories can vary significantly based on the type and brand of candy. Common candies like chocolate bars or gummies typically fall within this range per standard serving (about 40-50g)."
+            },
+            "macronutrient_breakdown": {
+                "protein": {
+                    "range": "1-3g per serving",
+                    "notes": "Candy is generally low in protein unless it contains nuts or dairy."
+                },
+                "carbs": {
+                    "range": "30-40g per serving",
+                    "notes": "Primary macronutrient in candy, mostly from sugars and refined carbohydrates."
+                },
+                "fat": {
+                    "range": "5-15g per serving",
+                    "notes": "Fat content varies; chocolate-based candies are higher in fat (e.g., cocoa butter), while gummies or hard candies are fat-free."
+                }
+            },
+            "key_vitamins_and_minerals": {
+                "present": [
+                    "Calcium (if dairy-based)",
+                    "Iron (in some fortified candies or dark chocolate)",
+                    "Trace amounts of potassium or magnesium (in dark chocolate)"
+                ],
+                "notes": "Candy is not a significant source of vitamins or minerals unless fortified. Dark chocolate may offer small amounts of antioxidants (e.g., flavonoids)."
+            },
+            "health_benefits": {
+                "notes": "Minimal health benefits. Potential mood boost due to sugar-induced serotonin release. Dark chocolate may offer minor cardiovascular benefits from flavonoids."
+            },
+            "potential_allergens_or_concerns": {
+                "common_allergens": [
+                    "Milk (in chocolate or cream-based candies)",
+                    "Soy (as an emulsifier in chocolate)",
+                    "Tree nuts or peanuts (in candies with inclusions)",
+                    "Gluten (in candies with wheat-based ingredients)"
+                ],
+                "dietary_concerns": [
+                    "High added sugar content (risk for blood sugar spikes, dental cavities)",
+                    "Artificial colors or flavors (may cause sensitivities in some individuals)",
+                    "High saturated fat (in chocolate or coconut-based candies)"
+                ]
+            },
+            "healthier_recommendations": [
+                "Choose dark chocolate (70% cocoa or higher) for less sugar and more antioxidants.",
+                "Opt for smaller portion sizes to reduce sugar intake.",
+                "Pair with nuts or fruit to add fiber/protein and slow sugar absorption.",
+                "Look for allergen-free alternatives if sensitivities exist (e.g., dairy-free, nut-free).",
+                "Avoid candies with artificial additives; select those with simpler ingredient lists."
+            ]
+        }
+    }
+}

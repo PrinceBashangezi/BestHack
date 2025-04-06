@@ -1,0 +1,110 @@
+{
+    "vision_analysis": {
+        "tags": [
+            {
+                "name": "text",
+                "confidence": 0.9996245503425598
+            },
+            {
+                "name": "food",
+                "confidence": 0.915313720703125
+            },
+            {
+                "name": "snack",
+                "confidence": 0.9036388397216797
+            },
+            {
+                "name": "indoor",
+                "confidence": 0.8752315044403076
+            },
+            {
+                "name": "packaging and labeling",
+                "confidence": 0.8674150705337524
+            },
+            {
+                "name": "convenience food",
+                "confidence": 0.8463141918182373
+            },
+            {
+                "name": "floor",
+                "confidence": 0.7804447412490845
+            }
+        ],
+        "objects": [
+            {
+                "object": "Scissors",
+                "confidence": 0.536
+            }
+        ],
+        "description": {
+            "captions": [
+                {
+                    "text": "a package of food",
+                    "confidence": 0.44288456439971924
+                }
+            ],
+            "tags": [
+                "text",
+                "indoor"
+            ]
+        }
+    },
+    "nutrition_analysis": {
+        "nutritional_analysis": {
+            "estimated_calories": {
+                "range": "150-300 kcal",
+                "notes": "Calorie range is estimated based on typical convenience snack foods. Actual calories depend on serving size and specific ingredients."
+            },
+            "macronutrient_breakdown": {
+                "protein": {
+                    "range": "2-8g",
+                    "notes": "Protein content varies; processed snacks often have minimal protein unless fortified or protein-focused."
+                },
+                "carbohydrates": {
+                    "range": "20-40g",
+                    "notes": "Likely includes refined carbs (e.g., flour, sugar) given the 'convenience food' label."
+                },
+                "fat": {
+                    "range": "5-15g",
+                    "notes": "May contain saturated/trans fats if fried or highly processed. Check label for specifics."
+                }
+            },
+            "key_vitamins_and_minerals": {
+                "common_in_processed_foods": [
+                    "Iron (fortified)",
+                    "B vitamins (thiamin, riboflavin, niacin)",
+                    "Calcium (if dairy-based)"
+                ],
+                "notes": "Whole-food ingredients would provide more natural micronutrients. Packaging may list fortifications."
+            },
+            "health_benefits": {
+                "potential_benefits": [
+                    "Quick energy source (carbs)",
+                    "Convenience for on-the-go consumption",
+                    "Possible fortification (e.g., fiber, vitamins)"
+                ],
+                "notes": "Benefits are limited due to processing. Whole foods would offer more nutrients and fiber."
+            },
+            "allergens_and_concerns": {
+                "common_allergens": [
+                    "Gluten (if wheat-based)",
+                    "Dairy",
+                    "Soy",
+                    "Nuts (if cross-contaminated)"
+                ],
+                "dietary_concerns": [
+                    "High sodium (typical in packaged snacks)",
+                    "Added sugars",
+                    "Artificial additives/preservatives"
+                ]
+            },
+            "healthier_recommendations": [
+                "Pair with a protein source (e.g., nuts, yogurt) to balance macros",
+                "Choose whole-grain versions if available",
+                "Check label for lower-sodium or no-added-sugar options",
+                "Combine with fresh veggies/fruit to increase fiber and nutrients",
+                "Consider homemade alternatives (e.g., air-popped popcorn, trail mix)"
+            ]
+        }
+    }
+}

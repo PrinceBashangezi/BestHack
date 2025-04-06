@@ -1,0 +1,128 @@
+{
+    "vision_analysis": {
+        "tags": [
+            {
+                "name": "food",
+                "confidence": 0.9952753782272339
+            },
+            {
+                "name": "dish",
+                "confidence": 0.9712579250335693
+            },
+            {
+                "name": "plate",
+                "confidence": 0.9645117521286011
+            },
+            {
+                "name": "meal",
+                "confidence": 0.9617324471473694
+            },
+            {
+                "name": "cuisine",
+                "confidence": 0.960701584815979
+            },
+            {
+                "name": "fast food",
+                "confidence": 0.8996322751045227
+            },
+            {
+                "name": "meat",
+                "confidence": 0.896268367767334
+            },
+            {
+                "name": "fork",
+                "confidence": 0.8914245963096619
+            },
+            {
+                "name": "kitchen utensil",
+                "confidence": 0.856959879398346
+            },
+            {
+                "name": "tableware",
+                "confidence": 0.8514803647994995
+            },
+            {
+                "name": "indoor",
+                "confidence": 0.8187867403030396
+            },
+            {
+                "name": "table",
+                "confidence": 0.812391996383667
+            },
+            {
+                "name": "breakfast",
+                "confidence": 0.7680144309997559
+            },
+            {
+                "name": "floor",
+                "confidence": 0.6597291231155396
+            }
+        ],
+        "objects": [
+            {
+                "object": "Kitchen utensil",
+                "confidence": 0.728
+            },
+            {
+                "object": "dining table",
+                "confidence": 0.552
+            }
+        ],
+        "description": {
+            "captions": [
+                {
+                    "text": "a plate of food",
+                    "confidence": 0.547345757484436
+                }
+            ],
+            "tags": [
+                "food",
+                "meal"
+            ]
+        }
+    },
+    "nutrition_analysis": {
+        "nutritional_analysis": {
+            "estimated_calories": {
+                "range": "300-600 kcal",
+                "notes": "Calories can vary widely based on the type and portion size of meat, cooking methods, and any additional ingredients not detected (e.g., oils, sauces)."
+            },
+            "macronutrient_breakdown": {
+                "protein": {
+                    "range": "20-40g",
+                    "notes": "Meat is a primary source of protein. The exact amount depends on the type (e.g., chicken, beef) and portion size."
+                },
+                "carbohydrates": {
+                    "range": "0-20g",
+                    "notes": "Likely minimal unless the meal includes hidden carbs (e.g., breading, sauces) or sides (not detected in the description)."
+                },
+                "fat": {
+                    "range": "15-30g",
+                    "notes": "Fat content depends on the cut of meat and cooking method (e.g., fried vs. grilled)."
+                }
+            },
+            "key_vitamins_and_minerals": {
+                "iron": "High (especially if red meat is present)",
+                "zinc": "Present (from meat)",
+                "vitamin_B12": "Present (from meat)",
+                "other": "Potential for additional vitamins/minerals if vegetables or grains are included (not detected)."
+            },
+            "health_benefits": {
+                "protein_source": "Supports muscle repair and growth.",
+                "iron_and_zinc": "Important for immune function and energy metabolism.",
+                "b_vitamins": "Essential for nervous system health and energy production."
+            },
+            "potential_allergens_or_concerns": {
+                "allergens": "None detected directly, but potential for hidden allergens in sauces or seasonings.",
+                "dietary_concerns": "High saturated fat if fatty cuts of meat are used. Processed meats may contain additives like nitrates."
+            },
+            "healthier_meal_recommendations": {
+                "choose_lean_meats": "Opt for grilled chicken, turkey, or lean cuts of beef.",
+                "add_vegetables": "Include a side of steamed or roasted vegetables for fiber and micronutrients.",
+                "limit_sauces": "Avoid heavy sauces or creamy dressings to reduce added fats and sugars.",
+                "whole_grains": "Pair with whole grains (e.g., quinoa, brown rice) if carbohydrates are desired.",
+                "portion_control": "Keep meat portions to ~3-4 oz (size of a deck of cards)."
+            }
+        }
+    }
+}

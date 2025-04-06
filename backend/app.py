@@ -4,7 +4,9 @@ import os
 import requests
 import json
 import datetime
-from .infer import analyze_image  # Remove the dot (.) from the import
+from infer import analyze_image  # Remove the dot (.) from the import
+from PIL import Image
+import io
 
 app = Flask(__name__)
 CORS(app)
@@ -101,38 +103,82 @@ def save_analysis_to_file(image_name, analysis_data):
     
     return filename
 
+@app.route("/", methods=["GET"])
+def home():
+    return "Flask app is running and reachable via ngrok!"
+
+def resize_image(file_path, max_size=800):
+    """Resize an image to reduce file size while maintaining aspect ratio"""
+    try:
+        img = Image.open(file_path)
+        
+        # Get original dimensions
+        width, height = img.size
+        
+        # Calculate new dimensions while maintaining aspect ratio
+        if width > height:
+            if width > max_size:
+                new_width = max_size
+                new_height = int(height * (max_size / width))
+        else:
+            if height > max_size:
+                new_height = max_size
+                new_width = int(width * (max_size / height))
+            else:
+                new_width, new_height = width, height
+        
+        # Resize image and save back to same path
+        if width > max_size or height > max_size:
+            img = img.resize((new_width, new_height), Image.Resampling.LANCZOS)
+            img.save(file_path, optimize=True, quality=85)
+            print(f"Image resized to {new_width}x{new_height}")
+        
+        return True
+    except Exception as e:
+        print(f"Error resizing image: {str(e)}")
+        return False
+
 @app.route("/upload", methods=["POST"])
 def upload_file():
-    if "image" not in request.files:
-        return jsonify({"error": "No image provided"}), 400
+    try:
+        if "image" not in request.files:
+            return jsonify({"error": "No image provided"}), 400
 
-    file = request.files["image"]
-    file_path = os.path.join(UPLOAD_FOLDER, file.filename)
-    file.save(file_path)
+        file = request.files["image"]
+        file_path = os.path.join(UPLOAD_FOLDER, file.filename)
+        file.save(file_path)
+        
+        # Resize image before processing
+        resize_image(file_path)
 
-    # Get basic image analysis from Azure
-    vision_result = analyze_image(file_path)
-    
-    # Get enhanced nutritional analysis from DeepSeek
-    nutrition_result = get_nutritional_analysis(vision_result)
-    
-    # Combine results
-    full_analysis = {
-        "vision_analysis": vision_result,
-        "nutrition_analysis": nutrition_result
-    }
-    
-    # Save analysis to a JSON file
-    saved_filename = save_analysis_to_file(file.filename, full_analysis)
-    
-    # Return combined results along with saved file information
-    response = {
-        "vision_analysis": vision_result,
-        "nutrition_analysis": nutrition_result,
-        "saved_to_file": saved_filename
-    }
-    
-    return jsonify(response)
+        # Get basic image analysis from Azure
+        vision_result = analyze_image(file_path)
+        
+        # Get enhanced nutritional analysis from DeepSeek
+        nutrition_result = get_nutritional_analysis(vision_result)
+        
+        # Combine results
+        full_analysis = {
+            "vision_analysis": vision_result,
+            "nutrition_analysis": nutrition_result
+        }
+        
+        # Save analysis to a JSON file
+        saved_filename = save_analysis_to_file(file.filename, full_analysis)
+        
+        # Return combined results
+        response = {
+            "vision_analysis": vision_result,
+            "nutrition_analysis": nutrition_result,
+            "saved_to_file": saved_filename
+        }
+        
+        return jsonify(response)
+    except Exception as e:
+        import traceback
+        print(f"Error in upload_file: {str(e)}")
+        print(traceback.format_exc())
+        return jsonify({"error": str(e)}), 500
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host="0.0.0.0", port=5000, debug=False, use_reloader=False)
