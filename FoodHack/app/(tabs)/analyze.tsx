@@ -381,7 +381,7 @@ const styles = StyleSheet.create({
     borderRadius: 8,
   },
   cameraButtonStyle: {
-    backgroundColor: '#0a7ea4',
+    backgroundColor: 'forestgreen',
     flex: 1,
     marginRight: 8,
   },
@@ -402,7 +402,7 @@ const styles = StyleSheet.create({
   },
   analyzeButton: {
     marginTop: 16,
-    backgroundColor: '#0a7ea4',
+    backgroundColor: 'forestgreen',
     paddingHorizontal: 24,
     borderRadius: 8,
   },
@@ -461,7 +461,7 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
   },
   tag: {
-    backgroundColor: '#0a7ea4',
+    backgroundColor: 'forestgreen',
     paddingHorizontal: 12,
     paddingVertical: 6,
     borderRadius: 16,
