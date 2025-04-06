@@ -1,0 +1,125 @@
+{
+    "vision_analysis": {
+        "tags": [
+            {
+                "name": "person",
+                "confidence": 0.99674391746521
+            },
+            {
+                "name": "human face",
+                "confidence": 0.9896070957183838
+            },
+            {
+                "name": "eyebrow",
+                "confidence": 0.9719687700271606
+            },
+            {
+                "name": "chin",
+                "confidence": 0.9611489772796631
+            },
+            {
+                "name": "indoor",
+                "confidence": 0.9568589925765991
+            },
+            {
+                "name": "jaw",
+                "confidence": 0.94956374168396
+            },
+            {
+                "name": "forehead",
+                "confidence": 0.9477125406265259
+            },
+            {
+                "name": "cheek",
+                "confidence": 0.9422219395637512
+            },
+            {
+                "name": "skin",
+                "confidence": 0.9400545358657837
+            },
+            {
+                "name": "neck",
+                "confidence": 0.9369575381278992
+            },
+            {
+                "name": "eyelash",
+                "confidence": 0.9285151958465576
+            },
+            {
+                "name": "lip",
+                "confidence": 0.9221785664558411
+            },
+            {
+                "name": "selfie",
+                "confidence": 0.9147827625274658
+            },
+            {
+                "name": "throat",
+                "confidence": 0.8885416984558105
+            },
+            {
+                "name": "clothing",
+                "confidence": 0.8748944997787476
+            },
+            {
+                "name": "portrait",
+                "confidence": 0.8671596050262451
+            },
+            {
+                "name": "portrait photography",
+                "confidence": 0.8666528463363647
+            },
+            {
+                "name": "hairstyle",
+                "confidence": 0.8504987955093384
+            },
+            {
+                "name": "pixie cut",
+                "confidence": 0.8466928601264954
+            },
+            {
+                "name": "wall",
+                "confidence": 0.8458381295204163
+            },
+            {
+                "name": "hair",
+                "confidence": 0.6462113857269287
+            }
+        ],
+        "objects": [
+            {
+                "object": "person",
+                "confidence": 0.948
+            }
+        ],
+        "description": {
+            "captions": [
+                {
+                    "text": "a person with a straight face",
+                    "confidence": 0.38210806250572205
+                }
+            ],
+            "tags": [
+                "person",
+                "indoor",
+                "wall",
+                "young",
+                "posing"
+            ]
+        }
+    },
+    "nutrition_analysis": {
+        "nutritional_analysis": {
+            "estimated_calories": "0 (no edible food items detected)",
+            "macronutrient_breakdown": {
+                "protein": "0g",
+                "carbohydrates": "0g",
+                "fat": "0g"
+            },
+            "key_vitamins_and_minerals": "None (no edible food items detected)",
+            "health_benefits": "None (no edible food items detected)",
+            "potential_allergens_or_dietary_concerns": "None (no edible food items detected)",
+            "recommendations_for_a_healthier_meal": "The image does not contain any detectable food items. For accurate nutritional analysis, please upload an image of a meal or edible items."
+        }
+    }
+}
