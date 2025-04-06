@@ -21,8 +21,8 @@ interface DayGroup {
   date: string;
   meals: {
     [mealType: string]: {
-      recommendation?: Recommendation;
-      mealTaken?: MealTaken;
+      recommendation?: Recommendation | Recommendation[];
+      mealTaken?: string | MealTaken | Record<string, any>;
     };
   };
 }
@@ -130,6 +130,91 @@ export default function FoodHistory() {
     }
   };
 
+  const renderRecommendation = (recommendation: Recommendation | Recommendation[] | undefined) => {
+    if (!recommendation) return null;
+
+    if (Array.isArray(recommendation)) {
+      return recommendation.map((rec, index) => (
+        <View key={index} style={styles.section}>
+          <Text style={styles.sectionTitle}>Recommendation</Text>
+          <Text style={styles.sectionText}>{rec.recommendation}</Text>
+          <Text style={styles.sectionTime}>
+            Recommended at: {rec.recommendedAt.toLocaleTimeString()}
+          </Text>
+        </View>
+      ));
+    }
+
+    return (
+      <View style={styles.section}>
+        <Text style={styles.sectionTitle}>Recommendation</Text>
+        <Text style={styles.sectionText}>{recommendation.recommendation}</Text>
+      </View>
+    );
+  };
+
+  const renderMealTaken = (mealTaken: string | MealTaken | Record<string, any> | undefined) => {
+    if (!mealTaken) return null;
+  
+    if (typeof mealTaken === 'string') {
+      return (
+        <View style={styles.section}>
+          <Text style={styles.sectionTitle}>What You Ate</Text>
+          <Text style={styles.sectionText}>{mealTaken}</Text>
+        </View>
+      );
+    }
+  
+    // Handle object case (either MealTaken or a generic map)
+    if (typeof mealTaken === 'object' && !Array.isArray(mealTaken)) {
+      // If it's a MealTaken object with standard fields
+      if ('mealTaken' in mealTaken && 'takenAt' in mealTaken) {
+        return (
+          <View style={styles.section}>
+            <Text style={styles.sectionTitle}>What You Ate</Text>
+            <Text style={styles.sectionText}>{mealTaken.mealTaken}</Text>
+          </View>
+        );
+      }
+  
+      // Handle generic map case where each key is a subsection
+      return (
+        <View style={styles.section}>
+          <Text style={styles.sectionTitle}>Meal Details</Text>
+          {Object.entries(mealTaken).map(([key, value], index) => (
+            <View key={index} style={styles.subsection}>
+              <Text style={styles.subsectionTitle}>
+                {key.split(/(?=[A-Z])/).join(' ')} {/* Split camelCase */}
+              </Text>
+              {typeof value === 'object' && !Array.isArray(value) ? (
+                Object.entries(value).map(([subKey, subValue], subIndex) => (
+                  <View key={subIndex} style={styles.mealDetailItem}>
+                    <Text style={styles.mealDetailTitle}>
+                      {subKey.charAt(0).toUpperCase() + subKey.slice(1)}:
+                    </Text>
+                    <Text style={styles.mealDetailContent}>
+                      {typeof subValue === 'string' || typeof subValue === 'number' 
+                        ? subValue 
+                        : JSON.stringify(subValue)}
+                    </Text>
+                  </View>
+                ))
+              ) : (
+                <Text style={styles.subsectionText}>
+                  {typeof value === 'string' || typeof value === 'number' 
+                    ? value 
+                    : JSON.stringify(value)}
+                </Text>
+              )}
+            </View>
+          ))}
+        </View>
+      );
+    }
+  
+    return null;
+  };
+
   if (loading) {
     return <ActivityIndicator size="large" color="forestgreen" />;
   }
@@ -174,29 +259,8 @@ export default function FoodHistory() {
                 
                 {expandedMeals[mealKey] && (
                   <View style={styles.mealContent}>
-                    {mealData.recommendation && (
-                      <View style={styles.section}>
-                        <Text style={styles.sectionTitle}>Recommendation</Text>
-                        <Text style={styles.sectionText}>
-                          {mealData.recommendation.recommendation}
-                        </Text>
-                        <Text style={styles.sectionTime}>
-                          Recommended at: {mealData.recommendation.recommendedAt.toLocaleTimeString()}
-                        </Text>
-                      </View>
-                    )}
-                    
-                    {mealData.mealTaken && (
-                      <View style={styles.section}>
-                        <Text style={styles.sectionTitle}>What You Ate</Text>
-                        <Text style={styles.sectionText}>
-                          {mealData.mealTaken.mealTaken}
-                        </Text>
-                        <Text style={styles.sectionTime}>
-                          Taken at: {mealData.mealTaken.takenAt.toLocaleTimeString()}
-                        </Text>
-                      </View>
-                    )}
+                    {renderRecommendation(mealData.recommendation)}
+                    {renderMealTaken(mealData.mealTaken)}
                   </View>
                 )}
               </View>
@@ -270,5 +334,34 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: 'forestgreen',
     textAlign: 'center',
+  },
+  mealDetailItem: {
+    marginBottom: 8,
+  },
+  mealDetailTitle: {
+    fontSize: 14,
+    fontWeight: 'bold',
+    color: '#555',
+  },
+  mealDetailContent: {
+    fontSize: 14,
+    color: '#333',
+  },
+  subsection: {
+    marginBottom: 12,
+    padding: 10,
+    backgroundColor: '#f5f5f5',
+    borderRadius: 6,
+  },
+  subsectionTitle: {
+    fontSize: 14,
+    fontWeight: 'bold',
+    marginBottom: 6,
+    color: '#444',
+    textTransform: 'capitalize',
+  },
+  subsectionText: {
+    fontSize: 14,
+    color: '#333',
   },
 });
