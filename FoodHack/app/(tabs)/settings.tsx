@@ -159,7 +159,7 @@ export default function SettingsScreen() {
         { key: 'privacyPolicy', title: 'Privacy Policy', icon: <MaterialIcons name="privacy-tip" size={20} color="#555" />, action: () => router.navigate('../privacy_policy')},
         { key: 'termsOfService', title: 'Terms of Service', icon: <MaterialIcons name="description" size={20} color="#555" />, action: () => router.navigate('../terms_of_service')},
         { key: 'faq', title: 'FAQ', icon: <MaterialIcons name="help" size={20} color="#555" />, action: () => router.navigate('../faq')},
-        { key: 'about', title: 'About FoodHack', icon: <Ionicons name={ "information-circle-sharp"} size={20} color="#555" />, action: () => router.navigate('../faq')},
+        { key: 'about', title: 'About FoodHack', icon: <Ionicons name={ "information-circle-sharp"} size={20} color="#555" />, action: () => router.navigate('../about')},
       ],
     },
   ];
