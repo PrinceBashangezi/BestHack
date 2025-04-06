@@ -79,6 +79,7 @@ export default function LoginScreen() {
         }
       });
       setShowHealthInfo(false)
+      router.navigate('/homepage')
     } catch (error: any) {
       Alert.alert('Error', error.message)
     } finally {

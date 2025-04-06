@@ -3,7 +3,6 @@ import React from 'react';
 import { Ionicons } from '@expo/vector-icons';
 import { useEffect, useState } from 'react';
 import { onAuthStateChanged, getAuth } from 'firebase/auth';
-
 export default function TabLayout() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
@@ -40,7 +39,7 @@ export default function TabLayout() {
           headerShown: true,
           tabBarLabel: 'Home',
           headerTitle: 'FoodHack',
-          tabBarIcon: ({ focused, color }) => (
+          tabBarIcon: ({ focused, color }: { focused: boolean; color: string }) => (
             <Ionicons name={focused ? "home-sharp" : "home-outline"} color={color} size={30} />
           ),
           href: isLoggedIn ? null : '/(tabs)', // Hide when logged in
@@ -53,7 +52,7 @@ export default function TabLayout() {
           headerShown: true,
           tabBarLabel: 'Home',
           headerTitle: 'FoodHack',
-          tabBarIcon: ({ focused, color }) => (
+          tabBarIcon: ({ focused, color }: { focused: boolean; color: string }) => (
             <Ionicons name={focused ? "home-sharp" : "home-outline"} color={color} size={30} />
           ),
           href: isLoggedIn ? '/homepage' : null, // Show only when logged in
@@ -65,7 +64,7 @@ export default function TabLayout() {
         options={{
           title: 'Food Analysis',
           headerTitle: 'Food Analysis',
-          tabBarIcon: ({ focused, color }) => (
+          tabBarIcon: ({ focused, color }: { focused: boolean; color: string }) => (
             <Ionicons name={focused ? "camera" : "camera-outline"} color={color} size={28} />
           ),
           href: !isLoggedIn ? null : '/analyze', // Hide when logged in
@@ -77,7 +76,7 @@ export default function TabLayout() {
         options={{
           title: 'Menu Scanner',
           headerTitle: 'Menu Scanner',
-          tabBarIcon: ({ focused, color }) => (
+          tabBarIcon: ({ focused, color }: { focused: boolean; color: string }) => (
             <Ionicons name={focused ? "restaurant" : "restaurant-outline"} color={color} size={28} />
           ),
           href: !isLoggedIn ? null : '/menu', // Hide when logged in
@@ -89,7 +88,7 @@ export default function TabLayout() {
         options={{
           title: 'Meals',
           headerTitle: 'My Meals',
-          tabBarIcon: ({ focused, color }) => (
+          tabBarIcon: ({ focused, color }: { focused: boolean; color: string }) => (
             <Ionicons name={focused ? "fast-food" : "fast-food-outline"} color={color} size={30} />
           ),
           href: !isLoggedIn ? null : '/explore', // Hide when logged in
@@ -100,7 +99,7 @@ export default function TabLayout() {
         name="settings"
         options={{
           title: 'Settings',
-          tabBarIcon: ({ focused, color }) => (
+          tabBarIcon: ({ focused, color }: { focused: boolean; color: string }) => (
             <Ionicons name={focused ? "settings" : "settings-outline"} color={color} size={30} />
           ),
           href: !isLoggedIn ? null : '/settings', // Hide when logged in
