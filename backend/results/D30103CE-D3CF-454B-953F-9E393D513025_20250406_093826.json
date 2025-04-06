@@ -1,0 +1,51 @@
+{
+    "vision_analysis": {
+        "tags": [
+            {
+                "name": "tan",
+                "confidence": 0.9045568108558655
+            },
+            {
+                "name": "wood",
+                "confidence": 0.9044556617736816
+            },
+            {
+                "name": "beige",
+                "confidence": 0.8897857069969177
+            },
+            {
+                "name": "plywood",
+                "confidence": 0.8745617866516113
+            },
+            {
+                "name": "indoor",
+                "confidence": 0.782406210899353
+            },
+            {
+                "name": "floor",
+                "confidence": 0.5610791444778442
+            }
+        ],
+        "objects": [
+            {
+                "object": "tool",
+                "confidence": 0.516
+            }
+        ],
+        "description": {
+            "captions": [
+                {
+                    "text": "a pair of pills on a table",
+                    "confidence": 0.42600157856941223
+                }
+            ],
+            "tags": []
+        },
+        "read_text": ""
+    },
+    "menu_recommendations": {
+        "error": "No menu detected in the image. Please take a photo of a food menu.",
+        "recommendations": [],
+        "items_to_avoid": []
+    }
+}

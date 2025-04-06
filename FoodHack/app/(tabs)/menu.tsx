@@ -364,6 +364,8 @@ export default function MenuAnalysisScreen() {
     }
   };
 
+// Replace the renderItemsToAvoid function with this improved version:
+
   // Render items to avoid with safety checks
   const renderItemsToAvoid = () => {
     if (!analysis?.menu_recommendations?.items_to_avoid) {
@@ -377,24 +379,67 @@ export default function MenuAnalysisScreen() {
         return (
           <ThemedView style={styles.section}>
             <ThemedText style={styles.sectionTitle}>Items to Avoid</ThemedText>
-            {itemsToAvoid.map((item, index) => (
-              <View key={index} style={styles.avoidItem}>
-                <View style={[styles.bulletPoint, { backgroundColor: '#e74c3c' }]} />
-                <ThemedText style={styles.avoidText}>{safeRenderText(item)}</ThemedText>
-              </View>
-            ))}
+            {itemsToAvoid.map((item, index) => {
+              // Check if the item is an object with menu_item and reason properties
+              if (typeof item === 'object' && item !== null) {
+                let itemName = "";
+                let itemReason = "";
+                
+                // Extract name from different possible properties
+                if ('menu_item' in item) {
+                  itemName = safeRenderText(item.menu_item);
+                } else if ('item' in item) {
+                  itemName = safeRenderText(item.item);
+                } else if ('name' in item) {
+                  itemName = safeRenderText(item.name);
+                } else if ('food' in item) {
+                  itemName = safeRenderText(item.food);
+                } else {
+                  itemName = "Unknown Item";
+                }
+                
+                // Extract reason if available
+                if ('reason' in item) {
+                  itemReason = safeRenderText(item.reason);
+                }
+                
+                return (
+                  <View key={index} style={styles.avoidItemCard}>
+                    <ThemedText style={styles.avoidItemName}>{itemName}</ThemedText>
+                    {itemReason && (
+                      <ThemedText style={styles.avoidItemReason}>{itemReason}</ThemedText>
+                    )}
+                  </View>
+                );
+              } else {
+                // If it's a simple string
+                return (
+                  <View key={index} style={styles.avoidItem}>
+                    <View style={[styles.bulletPoint, { backgroundColor: '#e74c3c' }]} />
+                    <ThemedText style={styles.avoidText}>{safeRenderText(item)}</ThemedText>
+                  </View>
+                );
+              }
+            })}
           </ThemedView>
         );
       } else if (typeof itemsToAvoid === 'object' && itemsToAvoid !== null) {
         return (
           <ThemedView style={styles.section}>
             <ThemedText style={styles.sectionTitle}>Items to Avoid</ThemedText>
-            {Object.entries(itemsToAvoid).map(([key, value], index) => (
-              <View key={index} style={styles.avoidItem}>
-                <View style={[styles.bulletPoint, { backgroundColor: '#e74c3c' }]} />
-                <ThemedText style={styles.avoidText}>{safeRenderText(value)}</ThemedText>
-              </View>
-            ))}
+            {Object.entries(itemsToAvoid).map(([key, value], index) => {
+              // Try to extract a meaningful name from the key
+              const itemName = key.charAt(0).toUpperCase() + key.slice(1).replace(/_/g, ' ');
+              
+              return (
+                <View key={index} style={styles.avoidItemCard}>
+                  <ThemedText style={styles.avoidItemName}>{itemName}</ThemedText>
+                  <ThemedText style={styles.avoidItemReason}>
+                    {safeRenderText(value)}
+                  </ThemedText>
+                </View>
+              );
+            })}
           </ThemedView>
         );
       }
@@ -487,6 +532,12 @@ const styles = StyleSheet.create({
     paddingTop: 60,
     gap: 8,
   },
+  subtleText: {
+    fontSize: 14,
+    color: '#666',
+    fontStyle: 'italic',
+    marginTop: 4,
+  },
   buttonContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -498,7 +549,7 @@ const styles = StyleSheet.create({
     borderRadius: 8,
   },
   cameraButtonStyle: {
-    backgroundColor: 'forestgreen',
+    backgroundColor: '#0a7ea4',
     flex: 1,
     marginRight: 8,
   },
@@ -519,7 +570,7 @@ const styles = StyleSheet.create({
   },
   analyzeButton: {
     marginTop: 16,
-    backgroundColor: 'forestgreen',
+    backgroundColor: '#0a7ea4',
     paddingHorizontal: 24,
     borderRadius: 8,
   },
@@ -575,7 +626,7 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
   },
   tag: {
-    backgroundColor: 'forestgreen',
+    backgroundColor: '#0a7ea4',
     paddingHorizontal: 12,
     paddingVertical: 6,
     borderRadius: 16,
@@ -647,5 +698,45 @@ const styles = StyleSheet.create({
   },
   avoidText: {
     flex: 1,
+  },
+  errorContainer: {
+    backgroundColor: '#fff8f8',
+    borderRadius: 8,
+    padding: 16,
+    borderLeftWidth: 4,
+    borderLeftColor: '#e74c3c',
+    marginVertical: 8,
+  },
+  errorText: {
+    color: '#c0392b',
+    fontSize: 16,
+  },
+  noteText: {
+    color: '#7f8c8d',
+    fontSize: 16,
+    fontStyle: 'italic',
+  },
+  // New styles for Items to Avoid section
+  avoidItemCard: {
+    backgroundColor: 'white',
+    borderRadius: 8,
+    padding: 16,
+    marginBottom: 12,
+    borderLeftWidth: 4,
+    borderLeftColor: '#e74c3c',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.1,
+    shadowRadius: 2,
+    elevation: 2,
+  },
+  avoidItemName: {
+    fontSize: 18,
+    fontWeight: '700',
+    marginBottom: 8,
+  },
+  avoidItemReason: {
+    fontSize: 14,
+    color: '#444',
   },
 });

@@ -1,0 +1,82 @@
+{
+    "vision_analysis": {
+        "tags": [
+            {
+                "name": "text",
+                "confidence": 0.9999856948852539
+            },
+            {
+                "name": "screenshot",
+                "confidence": 0.9545750617980957
+            },
+            {
+                "name": "menu",
+                "confidence": 0.906226396560669
+            },
+            {
+                "name": "font",
+                "confidence": 0.8843156099319458
+            },
+            {
+                "name": "number",
+                "confidence": 0.8547390699386597
+            }
+        ],
+        "objects": [],
+        "description": {
+            "captions": [
+                {
+                    "text": "text",
+                    "confidence": 0.7686996459960938
+                }
+            ],
+            "tags": [
+                "text"
+            ]
+        },
+        "read_text": "MENU APPETIZERS PRIX FIXE Shrimp Remoulade/Shrimp Cocktail .. . 16.00 Three Courses :. 45 Spicy Lobster . .. . 19 00 First Course: Lobster Bisque Baked Escargot .16 00 Entr\u00e9e: Cornish Game Hen, Seared Ahi Tuna . 17 .00 Grilled Salmon or 12 oz Sirloin Prosciutto Wrapped Mozzarella .14.00 Dessert Bananas Foster STEAK CUTS - SALADS AND SOUPS Filet Mignon, 8 ounce . 38.00 Spinach Salad .950 Apples apas cheese, apple cider dresing Filet Mignon. 12 ounce . . . . . . . 49.00 Caprese Salad .7.50 Rib Eye Steak, 18 ounce . .... .39.00 Ripe tomaso with fresh mozzarella and basil Porterhouse for Two . . . . . 40.00 French Onion Soup . . . . . . . . . . . . 5.00"
+    },
+    "menu_recommendations": {
+        "recommendations": [
+            {
+                "menu_item": "12 oz Sirloin",
+                "reason": "High in protein to support muscle growth, aligns with your strength goals and calorie needs",
+                "healthier_modifications": "Request minimal added butter/oil in preparation"
+            },
+            {
+                "menu_item": "Grilled Salmon",
+                "reason": "Excellent source of protein and omega-3 fatty acids for muscle recovery",
+                "healthier_modifications": "Request to be grilled without excess oil"
+            },
+            {
+                "menu_item": "Porterhouse for Two",
+                "reason": "Large protein portion (36oz total) to meet your high calorie and strength goals",
+                "healthier_modifications": "Share with someone to control portion size, trim visible fat"
+            },
+            {
+                "menu_item": "Spinach Salad",
+                "reason": "Nutrient-dense greens with cheese for added protein (dairy-free per your restrictions)",
+                "healthier_modifications": "Request apple cider dressing on the side"
+            }
+        ],
+        "items_to_avoid": [
+            {
+                "menu_item": "Lobster Bisque",
+                "reason": "Typically cream-based (contains dairy which you're avoiding)"
+            },
+            {
+                "menu_item": "Prosciutto Wrapped Mozzarella",
+                "reason": "Contains dairy (mozzarella)"
+            },
+            {
+                "menu_item": "Bananas Foster",
+                "reason": "High in sugar with limited nutritional value for strength goals"
+            },
+            {
+                "menu_item": "Baked Escargot",
+                "reason": "Often prepared with butter (dairy)"
+            }
+        ],
+        "menu_detected": true
+    }
+}

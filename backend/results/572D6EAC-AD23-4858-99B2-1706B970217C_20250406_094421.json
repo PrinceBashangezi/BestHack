@@ -1,0 +1,108 @@
+{
+    "vision_analysis": {
+        "tags": [
+            {
+                "name": "food",
+                "confidence": 0.9892242550849915
+            },
+            {
+                "name": "plate",
+                "confidence": 0.9792777299880981
+            },
+            {
+                "name": "vegetable",
+                "confidence": 0.9434288144111633
+            },
+            {
+                "name": "dish",
+                "confidence": 0.8773943185806274
+            },
+            {
+                "name": "breakfast",
+                "confidence": 0.860945999622345
+            },
+            {
+                "name": "indoor",
+                "confidence": 0.8607529401779175
+            },
+            {
+                "name": "cuisine",
+                "confidence": 0.8587652444839478
+            },
+            {
+                "name": "broccoli",
+                "confidence": 0.7577130198478699
+            },
+            {
+                "name": "plant",
+                "confidence": 0.630022406578064
+            },
+            {
+                "name": "asparagus",
+                "confidence": 0.5020084381103516
+            }
+        ],
+        "objects": [
+            {
+                "object": "Vegetable",
+                "confidence": 0.53
+            }
+        ],
+        "description": {
+            "captions": [
+                {
+                    "text": "a plate of food",
+                    "confidence": 0.5019698739051819
+                }
+            ],
+            "tags": [
+                "food",
+                "plate",
+                "vegetable",
+                "different"
+            ]
+        },
+        "read_text": ""
+    },
+    "nutrition_analysis": {
+        "nutritional_analysis": {
+            "estimated_calories": {
+                "range": "50-150 calories",
+                "notes": "Estimate based on a plate of primarily broccoli and possibly other vegetables. Calories can vary based on portion size and preparation method (e.g., raw vs. cooked with oil)."
+            },
+            "macronutrient_breakdown": {
+                "protein": "3-5 grams",
+                "carbohydrates": "10-15 grams",
+                "fat": "0-5 grams",
+                "notes": "Broccoli is low in fat and a good source of fiber and plant-based protein. Fat content may increase if cooked with oil or butter."
+            },
+            "key_vitamins_and_minerals": {
+                "vitamin_C": "High (broccoli is an excellent source)",
+                "vitamin_K": "High (important for blood clotting and bone health)",
+                "folate": "Moderate (supports cell division and DNA synthesis)",
+                "potassium": "Moderate (supports heart and muscle function)",
+                "iron": "Small amount (plant-based, non-heme iron)",
+                "calcium": "Small amount (supports bone health)",
+                "notes": "Broccoli is nutrient-dense, providing a wide array of vitamins and minerals with minimal calories."
+            },
+            "health_benefits": {
+                "digestive_health": "High fiber content supports gut health and regularity.",
+                "immune_support": "Vitamin C boosts immune function and acts as an antioxidant.",
+                "anti-inflammatory": "Contains compounds like sulforaphane, which may reduce inflammation.",
+                "bone_health": "Vitamin K and calcium contribute to strong bones.",
+                "low_calorie": "Ideal for weight management due to high volume and low calories."
+            },
+            "potential_allergens_or_concerns": {
+                "allergens": "None commonly associated with broccoli or typical vegetables.",
+                "dietary_concerns": "May cause bloating or gas in some individuals due to high fiber content. Those on blood thinners should monitor vitamin K intake."
+            },
+            "recommendations_for_a_healthier_meal": {
+                "add_protein": "Include a lean protein source like grilled chicken, tofu, or beans to make the meal more balanced.",
+                "healthy_fats": "Add a small portion of avocado or a drizzle of olive oil for healthy fats and improved nutrient absorption.",
+                "whole_grains": "Pair with quinoa or brown rice for complex carbohydrates and added fiber.",
+                "variety": "Incorporate other colorful vegetables (e.g., carrots, bell peppers) to increase nutrient diversity.",
+                "preparation_method": "Opt for steaming or roasting instead of frying to minimize added fats."
+            }
+        }
+    }
+}

@@ -1,0 +1,78 @@
+{
+    "vision_analysis": {
+        "tags": [
+            {
+                "name": "food",
+                "confidence": 0.9911750555038452
+            },
+            {
+                "name": "plate",
+                "confidence": 0.9823392629623413
+            },
+            {
+                "name": "vegetable",
+                "confidence": 0.9415324926376343
+            },
+            {
+                "name": "dish",
+                "confidence": 0.8900035619735718
+            },
+            {
+                "name": "fast food",
+                "confidence": 0.8802133798599243
+            },
+            {
+                "name": "cuisine",
+                "confidence": 0.8764817714691162
+            },
+            {
+                "name": "breakfast",
+                "confidence": 0.8548383712768555
+            },
+            {
+                "name": "indoor",
+                "confidence": 0.8323795795440674
+            },
+            {
+                "name": "broccoli",
+                "confidence": 0.7641377449035645
+            },
+            {
+                "name": "asparagus",
+                "confidence": 0.6590471267700195
+            },
+            {
+                "name": "plant",
+                "confidence": 0.6047426462173462
+            },
+            {
+                "name": "recipe",
+                "confidence": 0.4160842299461365
+            }
+        ],
+        "objects": [],
+        "description": {
+            "captions": [
+                {
+                    "text": "a plate of food",
+                    "confidence": 0.5325581431388855
+                }
+            ],
+            "tags": [
+                "food",
+                "plate",
+                "vegetable",
+                "different",
+                "arranged"
+            ]
+        },
+        "read_text": ""
+    },
+    "menu_recommendations": {
+        "recommendations": [],
+        "items_to_avoid": [],
+        "reason": "No specific food items were mentioned in the menu text/description.",
+        "menu_detected": true,
+        "note": "Menu detected, but no specific food items could be identified."
+    }
+}

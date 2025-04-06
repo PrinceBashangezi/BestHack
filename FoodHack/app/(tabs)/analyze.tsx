@@ -268,21 +268,7 @@ export default function FoodAnalysisScreen() {
       {analysis && (
         <ThemedView style={styles.resultsContainer}>
           <ThemedText type="subtitle" style={styles.resultsTitle}>Nutritional Analysis</ThemedText>
-          
-          {/* Food Tags */}
-          <ThemedView style={styles.section}>
-            <ThemedText style={styles.sectionTitle}>Detected Food</ThemedText>
-            <View style={styles.tagsContainer}>
-              {analysis.vision_analysis.tags
-                .filter(tag => tag.confidence > 0.8)
-                .slice(0, 6)
-                .map((tag, index) => (
-                  <View key={index} style={styles.tag}>
-                    <ThemedText style={styles.tagText}>{tag.name}</ThemedText>
-                  </View>
-                ))}
-            </View>
-          </ThemedView>
+
           
           {/* Calorie Information - Handle specially */}
           {analysis.nutrition_analysis.nutritional_analysis?.estimated_calories && (
