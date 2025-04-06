@@ -2,7 +2,10 @@ import React, { useEffect, useState, useRef } from 'react';
 import { View, Text, StyleSheet, Alert, TouchableOpacity, SectionList } from 'react-native';
 import { MaterialIcons, Feather, FontAwesome, Ionicons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
-import { supabase } from '../supabase'; // Import Supabase client
+import { auth, firestore } from '../supabase'; // Import Supabase client
+import { doc, onSnapshot, updateDoc, deleteDoc } from 'firebase/firestore'; // Import Firestore methods
+import { signOut, deleteUser, reauthenticateWithCredential, EmailAuthProvider } from 'firebase/auth';
+
 
 interface SettingItem {
   key: string;
@@ -25,30 +28,18 @@ export default function SettingsScreen() {
 
   useEffect(() => {
     const fetchUsername = async () => {
-      const { data: sessionData, error: sessionError } = await supabase.auth.getSession();
-
-      if (sessionError || !sessionData?.session?.user) {
-        console.error("Error fetching session or user not logged in:", sessionError);
-        setUsername('Guest');
-        return;
-      }
-
-      const userId = sessionData.session.user.id;
-
-      const { data, error } = await supabase
-        .from('FoodHack')
-        .select('user_data')
-        .eq('id', userId)
-        .single();
-
-      if (error) {
-        console.error("Error fetching user data:", error);
-        setUsername('Guest');
-      } else if (data?.user_data && Array.isArray(data.user_data) && data.user_data.length > 0) {
-        setUsername(data.user_data[0]); // Assuming the first element in the array is the user's name
-      } else {
-        setUsername('Guest');
-      }
+        const user = auth.currentUser;
+        if (user) {
+          const userRef = doc(firestore, 'users', user.uid);
+          const actualUnsubscribe = onSnapshot(userRef, (snapshot) => {
+            if (snapshot.exists()) {
+              const userData = snapshot.data();
+              setUsername(userData.username || 'Guest');
+            }
+          }, (error) => {
+          });
+          unsubscribeRef.current = actualUnsubscribe;
+        }
     };
 
     fetchUsername();
@@ -62,32 +53,41 @@ export default function SettingsScreen() {
   }, []);
 
   const handleLogout = async () => {
+    const user = auth.currentUser;
+    if (!user) {
+      Alert.alert("Error", "No user is logged in.");
+      return;
+    }
+    const userRef = doc(firestore, 'users', user.uid);
     try {
-      const { error } = await supabase.auth.signOut();
-      if (error) {
-        Alert.alert("Error", "There was an issue logging you out. Please try again.");
+      await updateDoc(userRef, {
+        discoverable: false,
+      });
+    } catch (error: any) {
+      if (error.code === 'permission-denied') {
+        Alert.alert("Error", "You do not have permission to update your profile.");
       } else {
-        Alert.alert("Success", "You have been logged out.");
+        Alert.alert("Error", "There was an issue updating your profile. You will still be logged out.");
       }
+    }
+    if (unsubscribeRef) {
+      unsubscribeRef; // Stop the listener
+    }
+    try {
+      await signOut(auth);
     } catch (error) {
-      console.error("Logout error:", error);
-      Alert.alert("Error", "An unexpected error occurred. Please try again.");
+      Alert.alert("Error", "There was an issue logging you out. Please try again.");
     }
   };
 
   const handleDeleteAccount = async () => {
-    const { data: sessionData, error: sessionError } = await supabase.auth.getSession();
-
-    if (sessionError || !sessionData?.session?.user) {
-      Alert.alert("Error", "No user is logged in.");
-      return;
-    }
-
-    const userId = sessionData.session.user.id;
-
-    Alert.alert(
+    const user = auth.currentUser;
+    if (!user) return;
+  
+    // For email/password users only - adjust if you have other auth providers
+    Alert.prompt(
       "Delete Account",
-      "Deleting your account will erase all your data permanently. This action cannot be undone.",
+      "This will permanently delete all your data. To confirm, please enter your password:",
       [
         {
           text: "Cancel",
@@ -96,74 +96,47 @@ export default function SettingsScreen() {
         {
           text: "Delete",
           style: "destructive",
-          onPress: async () => {
+          onPress: async (password) => {
+            if (!password) {
+              Alert.alert("Error", "Password is required to delete your account.");
+              return;
+            }
+  
             try {
-              // Fetch user data
-              const { data, error: fetchError } = await supabase
-                .from('users')
-                .select('*')
-                .eq('id', userId)
-                .single();
-
-              if (fetchError) {
-                Alert.alert("Error", "Failed to fetch user data. Please try again.");
+              // Create credential and reauthenticate
+              if (!user.email) {
+                Alert.alert("Error", "User email is not available.");
                 return;
               }
-
-              // Archive user data
-              const { error: archiveError } = await supabase
-                .from('formerUsers')
-                .insert(data);
-
-              if (archiveError) {
-                Alert.alert("Error", "Failed to archive user data. Please try again.");
-                return;
+              const credential = EmailAuthProvider.credential(user.email, password);
+              await reauthenticateWithCredential(user, credential);
+  
+              // Proceed with deletion
+              const userRef = doc(firestore, 'users', user.uid);
+              await deleteDoc(userRef);
+              await deleteUser(user);
+              await signOut(auth);
+              
+              Alert.alert("Success", "Your account has been deleted.");
+            } catch (error: any) {
+              console.error("Deletion error:", error);
+              let errorMessage = "Failed to delete account. Please try again.";
+              
+              if (error.code === 'auth/wrong-password') {
+                errorMessage = "Incorrect password. Please try again.";
+              } else if (error.code === 'auth/requires-recent-login') {
+                errorMessage = "Session expired. Please log in again before deleting.";
               }
-
-              // Delete user data from 'users' table
-              const { error: removeError } = await supabase
-                .from('users')
-                .delete()
-                .eq('id', userId);
-
-              if (removeError) {
-                Alert.alert("Error", "Failed to delete user data. Please try again.");
-                return;
-              }
-
-              // Delete user from Supabase authentication system
-              const adminApiUrl = `https://<your-supabase-project>.supabase.co/auth/v1/admin/users/${userId}`;
-              const adminApiKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
-
-              const response = await fetch(adminApiUrl, {
-                method: 'DELETE',
-                headers: {
-                  Authorization: `Bearer ${adminApiKey}`,
-                  'Content-Type': 'application/json',
-                },
-              });
-
-              if (!response.ok) {
-                Alert.alert("Error", "Failed to delete user from authentication system.");
-                return;
-              }
-
-              // Sign out the user
-              const { error: signOutError } = await supabase.auth.signOut();
-              if (signOutError) {
-                Alert.alert("Error", "Failed to log out after account deletion.");
-              }
-
-              Alert.alert("Success", "Your account has been deleted.", [{ text: "OK" }]);
-            } catch (error) {
-              console.error("Delete account error:", error);
-              Alert.alert("Error", "An unexpected error occurred. Please try again.");
+              
+              Alert.alert("Error", errorMessage);
             }
           },
         },
-      ]
+      ],
+      'secure-text'
     );
   };
+
 
   const settingsSections: SettingSection[] = [
     {
@@ -259,9 +232,6 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     paddingHorizontal: 16,
   },
-  buttonContainer: {
-    alignItems: 'center',
-  },
   footer: {
     alignItems: 'flex-start',
     marginTop: 'auto',
@@ -295,5 +265,32 @@ const styles = StyleSheet.create({
   dateText: {
     fontSize: 14,
     color: '#555',
+  },
+  modalContainer: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "rgba(0, 0, 0, 0.5)",
+  },
+  modalContent: {
+    width: "80%",
+    padding: 20,
+    backgroundColor: "#fff",
+    borderRadius: 10,
+    alignItems: "center",
+  },
+  input: {
+    width: "100%",
+    height: 40,
+    borderColor: "#ccc",
+    borderWidth: 1,
+    marginBottom: 20,
+    paddingHorizontal: 10,
+    borderRadius: 5,
+  },
+  buttonContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    width: "100%",
   },
 });
