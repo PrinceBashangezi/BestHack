@@ -74,7 +74,10 @@ export default function HomePage() {
                     </Text>
                 </View>
                 ) : (
-                <Text style={styles.noMealsText}>No meals recorded yet</Text>
+                    <View>
+                        <Text style={styles.noMealsText}>No meals recorded yet</Text>
+                        <Text style={styles.noMealsText}>eat healthy and waste little</Text>
+                    </View>
                 )}
             </View>
         </View>

@@ -14,6 +14,7 @@ interface Profile {
   weight: number;
   dietaryRestrictions: string;
   healthGoals: string;
+  dailyCalorieTarget?: number;
 }
 
 interface SettingItem {
@@ -53,7 +54,8 @@ export default function SettingsScreen() {
               height: userData.healthInfo?.height || 0,
               weight: userData.healthInfo?.weight || 0,
               dietaryRestrictions: userData.healthInfo?.dietaryRestrictions || '',
-              healthGoals: userData.healthInfo?.healthGoals || ''
+              healthGoals: userData.healthInfo?.healthGoals || '',
+              dailyCalorieTarget: userData.healthInfo?.dailyCalorieTarget || 0,
             });
           }
         }, (error) => {
@@ -216,6 +218,7 @@ export default function SettingsScreen() {
       {renderProfileField('Height', profile.height, 'height')}
       {renderProfileField('Dietary Restrictions', profile.dietaryRestrictions, 'dietaryRestrictions')}
       {renderProfileField('Health Goals', profile.healthGoals, 'healthGoals')}
+      {renderProfileField('Daily Calorie Target', profile.dailyCalorieTarget || 0, 'dailyCalorieTarget')}
     </View>
   ) : null;
 

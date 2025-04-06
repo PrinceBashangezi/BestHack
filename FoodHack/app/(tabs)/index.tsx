@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
-import { Alert, StyleSheet, View, Text } from 'react-native'
+import { Alert, StyleSheet, View, Text, TextInput } from 'react-native'
 import { firestore, auth } from '../supabase'
 import { signInWithEmailAndPassword, createUserWithEmailAndPassword } from "firebase/auth";
-import { Button, Input } from '@rneui/themed'
+import { Button } from '@rneui/themed'
 import { useEffect } from 'react'
 import { setDoc, doc } from "firebase/firestore"
 import { useRouter } from 'expo-router'
@@ -17,6 +17,7 @@ export default function LoginScreen() {
   const [height, setHeight] = useState('')
   const [dietaryRestrictions, setDietaryRestrictions] = useState('')
   const [healthGoals, setHealthGoals] = useState('')
+  const [dailyCalorieTarget, setDailyCalorieTarget] = useState('')
   const [loading, setLoading] = useState(false)
   const [isSigningUp, setIsSigningUp] = useState(false)
   const [showHealthInfo, setShowHealthInfo] = useState(false)
@@ -75,7 +76,8 @@ export default function LoginScreen() {
           weight: weight,
           height: height,
           dietaryRestrictions: dietaryRestrictions,
-          healthGoals: healthGoals
+          healthGoals: healthGoals,
+          dailyCalorieTarget: dailyCalorieTarget
         }
       });
       setShowHealthInfo(false)
@@ -93,47 +95,53 @@ export default function LoginScreen() {
       { showHealthInfo ? (
         <View>
           <Text style={styles.title}>Health Information</Text>
-          <View style={styles.verticallySpaced}>
-            <Input
-              label="Age"
-              onChangeText={setAge}
-              value={age}
-              placeholder="Enter your age"
-              keyboardType="numeric"
-            />
-          </View>
-          <View style={styles.verticallySpaced}>
-            <Input
-              label="Weight (lbs)"
-              onChangeText={setWeight}
-              value={weight}
-              placeholder="Enter your weight"
-              keyboardType="numeric"
-            />
-          </View>
-          <View style={styles.verticallySpaced}>
-            <Input
-              label="Height"
-              onChangeText={setHeight}
-              value={height}
-              placeholder="Enter your height (e.g., 5'9\)"            />
-          </View>
-          <View style={styles.verticallySpaced}>
-            <Input
-              label="Dietary Restrictions"
-              onChangeText={setDietaryRestrictions}
-              value={dietaryRestrictions}
-              placeholder="Any food allergies or restrictions"
-            />
-          </View>
-          <View style={styles.verticallySpaced}>
-            <Input
-              label="Health Goals"
-              onChangeText={setHealthGoals}
-              value={healthGoals}
-              placeholder="Your fitness or health objectives"
-            />
-          </View>
+          <TextInput
+            style={styles.input}
+            placeholder="Enter your age"
+            placeholderTextColor="#888"
+            keyboardType="numeric"
+            value={age}
+            onChangeText={setAge} // Correct usage of setState
+          />
+          <TextInput
+            style={styles.input}
+            placeholder="Enter your weight"
+            placeholderTextColor="#888"
+            keyboardType="numeric"
+            value={weight}
+            onChangeText={setWeight} // Correct usage of setState
+          />
+          <TextInput
+            style={styles.input}
+            placeholder="Enter your height (e.g., 5'9\"
+            placeholderTextColor="#888"
+            value={height}
+            onChangeText={setHeight} // Correct usage of setState
+          />
+          <TextInput
+            style={styles.input}
+            placeholder="Any food allergies or restrictions"
+            placeholderTextColor="#888"
+            multiline
+            value={dietaryRestrictions}
+            onChangeText={setDietaryRestrictions} // Correct usage of setState
+          />
+          <TextInput
+            style={styles.input}
+            placeholder="Your fitness or health objectives"
+            placeholderTextColor="#888"
+            multiline
+            value={healthGoals}
+            onChangeText={setHealthGoals} // Correct usage of setState
+          />
+          <TextInput
+            style={styles.input}
+            placeholder="Your daily calorie target"
+            placeholderTextColor="#888"
+            multiline
+            value={dietaryRestrictions}
+            onChangeText={setDietaryRestrictions} // Correct usage of setState
+          />
           <Button 
             title="Save Information"
             color={'forestgreen'}
@@ -142,99 +150,83 @@ export default function LoginScreen() {
         </View>
       ) : isSigningUp ? (
         <>
-          <View style={styles.verticallySpaced}>
-            <Input
-              label="First Name"
-              onChangeText={setFirstName}
-              value={firstName}
-              placeholder="Enter your first name"
-            />
-          </View>
-          <View style={styles.verticallySpaced}>
-            <Input
-              label="Email"
-              leftIcon={{ type: 'font-awesome', name: 'envelope' }}
-              onChangeText={setEmail}
-              value={email}
-              placeholder="foodhack@gmail.com"
-              autoCapitalize={'none'}
-            />
-          </View>
-          <View style={styles.verticallySpaced}>
-            <Input
-              label="Password"
-              leftIcon={{ type: 'font-awesome', name: 'lock' }}
-              onChangeText={setPassword}
-              value={password}
-              secureTextEntry={true}
-              placeholder="Password"
-              autoCapitalize={'none'}
-            />
-          </View>
-          <View style={styles.verticallySpaced}>
-            <Input
-              label="Confirm Password"
-              leftIcon={{ type: 'font-awesome', name: 'lock' }}
-              onChangeText={setConfirmPassword}
-              value={confirmPassword}
-              secureTextEntry={true}
-              placeholder="Confirm Password"
-              autoCapitalize={'none'}
-            />
-          </View>
-          <View style={[styles.verticallySpaced, styles.mt20]}>
-            <Button 
-              title="Sign Up" 
-              color={'forestgreen'}
-              disabled={loading} 
-              onPress={signUpWithEmail} 
-            />
-          </View>
-          <View style={styles.verticallySpaced}>
-            <Button 
-              title="Back to Sign In" 
-              type="outline" 
-              onPress={() => setIsSigningUp(false)} 
-            />
-          </View>
+        <Text style={styles.title}>Sign Up</Text>
+          <TextInput
+            style={styles.input}
+            placeholder="Enter your first name"
+            placeholderTextColor="#888"
+            value={firstName}
+            onChangeText={setFirstName}
+          />
+          <TextInput
+            style={styles.input}
+            placeholder="foodhack@gmail.com"
+            placeholderTextColor="#888"
+            keyboardType="email-address"
+            value={email}
+            onChangeText={setEmail}
+            autoCapitalize="none"
+          />
+          <TextInput
+            style={styles.input}
+            placeholder="Password"
+            placeholderTextColor="#888"
+            value={password}
+            onChangeText={setPassword}
+            secureTextEntry
+          />
+          <TextInput
+            style={styles.input}
+            placeholder="Confirm Password"
+            placeholderTextColor="#888"
+            value={confirmPassword}
+            onChangeText={setConfirmPassword}
+            secureTextEntry
+          />
+          <Button 
+            title="Sign Up" 
+            color={'forestgreen'}
+            disabled={loading} 
+            onPress={signUpWithEmail} 
+            buttonStyle={styles.roundedButton}
+          />
+          <Button 
+            title="Back to Sign In" 
+            type="outline" 
+            onPress={() => setIsSigningUp(false)} 
+          />
         </>
       ) : (
         <>
-          <View style={[styles.verticallySpaced, styles.mt20]}>
-            <Input
-              label="Email"
-              leftIcon={{ type: 'font-awesome', name: 'envelope' }}
-              onChangeText={setEmail}
-              value={email}
-              placeholder="foodhack@gmail.com"
-              autoCapitalize={'none'}
-            />
-          </View>
-          <View style={styles.verticallySpaced}>
-            <Input
-              label="Password"
-              leftIcon={{ type: 'font-awesome', name: 'lock' }}
-              onChangeText={setPassword}
-              value={password}
-              secureTextEntry={true}
-              placeholder="Password"
-              autoCapitalize={'none'}
-            />
-          </View>
-          <View style={[styles.verticallySpaced, styles.mt20]}>
-            <Button 
-              title="Sign In" 
-              disabled={loading} color={'forestgreen'}
-              onPress={signInWithEmail} 
-            />
-          </View>
-          <View style={styles.verticallySpaced}>
-            <Button 
-              title=" Don't have an account? Sign Up" 
-              type="outline" 
-              onPress={() => setIsSigningUp(true)} 
-            />
-          </View>
+         <Text style={styles.title}>Sign In</Text>
+          <TextInput
+            style={styles.input}
+            placeholder="foodhack@gmail.com"
+            placeholderTextColor="#888"
+            keyboardType="email-address"
+            value={email}
+            onChangeText={setEmail}
+          />
+          <TextInput
+            style={styles.input}
+            placeholder="Password"
+            placeholderTextColor="#888"
+            value={password}
+            onChangeText={setPassword}
+            secureTextEntry
+          />
+          <Button 
+            title="Sign In" 
+            disabled={loading} 
+            color={'forestgreen'}
+            onPress={signInWithEmail} 
+            buttonStyle={styles.roundedButton}
+          />
+          <Button 
+            title="Don't have an account? Sign Up" 
+            type="outline" 
+            onPress={() => setIsSigningUp(true)} 
+          />
         </>
       )}
     </View>
@@ -246,13 +238,13 @@ const styles = StyleSheet.create({
     marginTop: 40,
     padding: 12,
   },
-  verticallySpaced: {
-    paddingTop: 4,
-    paddingBottom: 4,
-    alignSelf: 'stretch',
-  },
-  mt20: {
-    marginTop: 20,
+  input: {
+    borderWidth: 1,
+    borderColor: 'forestgreen',
+    borderRadius: 10,
+    padding: 10,
+    marginVertical: 8,
+    fontSize: 16,
   },
   title: {
     fontSize: 20,
@@ -260,4 +252,9 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     textAlign: 'center',
   },
-})
+  roundedButton: {
+    borderRadius: 10,
+    width: 200, // Set a smaller width for the buttons
+    alignSelf: 'center', // Center the buttons horizontally
+  },
+});
