@@ -5,6 +5,7 @@ import { signInWithEmailAndPassword, createUserWithEmailAndPassword} from "fireb
 import { Button, Input } from '@rneui/themed'
 import 'react-native-url-polyfill/auto'
 import { useEffect } from 'react'
+import { setDoc, doc } from "firebase/firestore"
 
 export default function HomeScreen() {
   const [email, setEmail] = useState('')
@@ -42,6 +43,12 @@ export default function HomeScreen() {
     setLoading(true)
     await createUserWithEmailAndPassword(auth, email,password)
     setLoading(false)
+    const user = auth.currentUser
+    if (user) {
+      await setDoc(doc(firestore, "Users", user.uid), {
+        email: email
+      });
+    }
   }
 
 
