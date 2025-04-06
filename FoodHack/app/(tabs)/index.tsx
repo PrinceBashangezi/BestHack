@@ -105,7 +105,7 @@ export default function LoginScreen() {
           />
           <TextInput
             style={styles.input}
-            placeholder="Enter your weight"
+            placeholder="Enter your weight in pounds"
             placeholderTextColor="#888"
             keyboardType="numeric"
             value={weight}

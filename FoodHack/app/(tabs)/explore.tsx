@@ -40,7 +40,7 @@ export default function FoodHistory() {
 
       try {
         // Get references to the subcollections
-        const userRef = doc(firestore, 'users', user.uid);
+        const userRef = doc(firestore, 'Users', user.uid);
         const recommendationsRef = collection(userRef, 'recommendations');
         const mealsTakenRef = collection(userRef, 'mealsTaken');
 
