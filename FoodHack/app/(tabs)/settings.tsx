@@ -1,8 +1,8 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { View, Text, StyleSheet, Alert, TouchableOpacity, SectionList } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { MaterialIcons, Feather, FontAwesome } from '@expo/vector-icons';
-import useRouter from 'expo-router';
+import { MaterialIcons, Feather, FontAwesome, Ionicons } from '@expo/vector-icons';
+import { useRouter } from 'expo-router';
 import { supabase } from '../supabase'; // Import Supabase client
 
 interface SettingItem {
@@ -26,7 +26,7 @@ export default function SettingsScreen() {
 
   useEffect(() => {
     const fetchUsername = async () => {
-      const user = supabase.auth.user();
+      const user = supabase.auth.getUser();
       if (user) {
         const { data, error } = await supabase
           .from('users')
@@ -68,7 +68,7 @@ export default function SettingsScreen() {
   };
 
   const handleDeleteAccount = async () => {
-    const user = supabase.auth.user();
+    const user = supabase.auth.getUser();
     if (!user) return;
 
     Alert.alert(
@@ -148,15 +148,16 @@ export default function SettingsScreen() {
     {
       title: 'Get in Touch',
       data: [
-        { key: 'contactUs', title: 'Contact Us', icon: <FontAwesome name="envelope" size={20} color="#555" />, action: () => router.navigate('contact')},
+        { key: 'contactUs', title: 'Contact Us', icon: <FontAwesome name="envelope" size={20} color="#555" />, action: () => router.navigate('../contact') },
       ],
     },
     {
       title: 'Support',
       data: [
-        { key: 'privacyPolicy', title: 'Privacy Policy', icon: <MaterialIcons name="privacy-tip" size={20} color="#555" />, action: () => router.navigate('privacy_policy')},
-        { key: 'termsOfService', title: 'Terms of Service', icon: <MaterialIcons name="description" size={20} color="#555" />, action: () => router.navigate('terms_of_service')},
-        { key: 'faq', title: 'FAQ', icon: <MaterialIcons name="help" size={20} color="#555" />, action: () => router.navigate('faq')},
+        { key: 'privacyPolicy', title: 'Privacy Policy', icon: <MaterialIcons name="privacy-tip" size={20} color="#555" />, action: () => router.navigate('../privacy_policy')},
+        { key: 'termsOfService', title: 'Terms of Service', icon: <MaterialIcons name="description" size={20} color="#555" />, action: () => router.navigate('../terms_of_service')},
+        { key: 'faq', title: 'FAQ', icon: <MaterialIcons name="help" size={20} color="#555" />, action: () => router.navigate('../faq')},
+        { key: 'about', title: 'About FoodHack', icon: <Ionicons name={ "information-circle-sharp"} size={20} color="#555" />, action: () => router.navigate('../faq')},
       ],
     },
   ];

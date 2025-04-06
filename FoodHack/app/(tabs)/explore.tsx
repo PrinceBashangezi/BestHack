@@ -1,9 +1,16 @@
-import { StyleSheet, View, FlatList, ActivityIndicator, Text, RefreshControl } from 'react-native';
+import { StyleSheet, View, FlatList, ActivityIndicator, Text } from 'react-native';
 import { useState, useEffect } from 'react';
+import { supabase } from '../supabase'; // Import Supabase client
+
+interface FoodHistoryItem {
+  id: number;
+  recommendation: string;
+  created_at: string;
+}
 
 
 export default function FoodHistory() {
-  const [foodHistory, setFoodHistory] = useState([]);
+  const [foodHistory, setFoodHistory] =useState<FoodHistoryItem[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -25,26 +32,19 @@ export default function FoodHistory() {
 
   return (
     (loading) ? (
-      <ActivityIndicator size="large" color="#ffc0cb" />
+      <ActivityIndicator size="large" color="forestgreen" />
     ) : (
-      <FlatList>  
+      <FlatList
         data={foodHistory}
         keyExtractor={(item) => item.id.toString()}
-        refreshControl={
-            <RefreshControl
-              refreshing={refreshing}
-              onRefresh={handleRefresh}
-              colors={['#ffc0cb']}
-              tintColor="#ffc0cb"
-            />
-          }
         renderItem={({ item }) => (
-          <View style={styles.titleContainer}>
-            <Text>{item.food_item}</Text>
-            <Text>{item.calories} kcal</Text>
+          <View style={{ padding: 10, borderBottomWidth: 1, borderBottomColor: '#ccc' }}>
+            <Text>{item.recommendation}</Text>
+            <Text>{new Date(item.created_at).toLocaleDateString()}</Text>
           </View>
         )}
-      </FlatList>
+      />
+    )
   );
 }
 

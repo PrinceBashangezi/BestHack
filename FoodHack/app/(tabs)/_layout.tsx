@@ -5,12 +5,12 @@ import { Ionicons } from '@expo/vector-icons';
 export default function TabLayout() {
 
   const tabScreenOptions = {
-    tabBarActiveTintColor: 'green ',
-    headerShown: false,
-    headerStyle: { backgroundColor: 'blue' },
+    tabBarActiveTintColor: 'black',
+    headerShown: true,
+    headerStyle: { backgroundColor: 'forestgreen' },
     headerShadowVisible: false,
-    headerTintColor: 'green',
-    tabBarStyle: { backgroundColor: 'blue' },
+    headerTintColor: 'white',
+    tabBarStyle: { backgroundColor: 'forestgreen' },
     headerBackTitle: 'Back',
     headerBackTitleVisible: true,
     tabBarInactiveTintColor: 'white',
@@ -23,6 +23,7 @@ export default function TabLayout() {
         name="index"
         options={{
           title: 'Home',
+          headerTitle: 'FoodHack',
           tabBarIcon: ({ focused, color }) => (
             <Ionicons name={focused ? "home-sharp" : "home-outline"} color={color} size={30} />
           ),
@@ -33,7 +34,7 @@ export default function TabLayout() {
         options={{
           title: 'Explore',
           tabBarIcon: ({ focused, color }) => (
-            <Ionicons name={focused ? "home-sharp" : "home-outline"} color={color} size={30} />
+            <Ionicons name={focused ? "fast-food" : "fast-food-outline"} color={color} size={30} />
           ),
         }}
       />
