@@ -10,7 +10,7 @@ export default function HomeScreen() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [loading, setLoading] = useState(false)
-  const [session, setSession] = useState<Session | null>(null)
+  const [isLoggedIn, signedIn] = useState(false)
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
@@ -20,52 +20,37 @@ export default function HomeScreen() {
         signedIn(false)
       }
     })
-    supabase.auth.onAuthStateChange((_event, session) => {
-      setSession(session)
-    })
+
+    return () => unsubscribe()
+
   }, [])
 
   async function signInWithEmail() {
     setLoading(true)
     await signInWithEmailAndPassword(auth, email, password)
 
-    if (error) Alert.alert(error.message)
-    setLoading(false)
+    const user = auth.currentUser
+    if (!user) {
+      Alert.alert('Invalid email or password')
+      signedIn(false)
+    } else {
+      signedIn(true)      
+    }
   }
 
   async function signUpWithEmail() {
     setLoading(true)
-    const {
-      data: { session },
-      error,
-    } = await supabase.auth.signUp({
-      email: email,
-      password: password,
-    })
-
-    supabase.from("FoodHack")
-    .insert("UID", id)
-    .eq("id", userid)
-
-    if (error) Alert.alert(error.message)
-    if (!session) Alert.alert('Please check your inbox for email verification!')
+    await createUserWithEmailAndPassword(auth, email,password)
     setLoading(false)
   }
 
 
   return (
     <View style={styles.container}>
-      {session? (
+      {isLoggedIn? (
         <>
         <View>  
-          <Input
-            label="Email"
-            leftIcon={{ type: 'font-awesome', name: 'envelope' }}
-            onChangeText={(text) => setEmail(text)}
-            value={email}
-            placeholder="email@address.com"
-            autoCapitalize={'none'}
-          />
+          
         </View>
         </>
         //insert expression
