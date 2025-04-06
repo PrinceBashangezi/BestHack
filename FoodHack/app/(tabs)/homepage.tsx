@@ -1,23 +1,63 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import { View, Text, StyleSheet } from 'react-native'
 import { firestore, auth } from '../supabase'
 import { useEffect } from 'react'
-import { query, collection, orderBy, getDocs, limit, doc, getDoc } from "firebase/firestore"
+import { query, collection, orderBy, getDocs, limit, doc, getDoc, onSnapshot } from "firebase/firestore"
 
+
+interface Profile {
+    email: string;
+    username: string;
+    age: number;
+    height: number;
+    weight: number;
+    dietaryRestrictions: string;
+    healthGoals: string;
+    dailyCalorieTarget?: number;
+  }
 
 
 export default function HomePage() {
     const [latestMeal, setLatestMeal] = useState<any>(null)
     const [firstName, setFirstName] = useState<string | null>(null)
+    const [profile, setProfile] = useState<Profile | null>(null);
+    const unsubscribeRef = useRef<(() => void) | null>(null);
+    
     
     useEffect(() => {
         const user = auth.currentUser
         if (user) {
         fetchUsername(user.uid)
         fetchLatestMeal(user.uid)
+        fetchProfile()
         setFirstName(user.displayName || null)
         }
     }, [])
+
+
+    const fetchProfile = async () => {
+      const user = auth.currentUser;
+      if (user) {
+        const userRef = doc(firestore, 'Users', user.uid);
+        const actualUnsubscribe = onSnapshot(userRef, (snapshot) => {
+          if (snapshot.exists()) {
+            const userData = snapshot.data();
+            setProfile({
+              email: userData.email || user.email || '',
+              username: userData.firstName || 'Guest',
+              age: userData.health?.age || 0,
+              height: userData.healthInfo?.height || 0,
+              weight: userData.healthInfo?.weight || 0,
+              dietaryRestrictions: userData.healthInfo?.dietaryRestrictions || '',
+              healthGoals: userData.healthInfo?.healthGoals || '',
+              dailyCalorieTarget: userData.healthInfo?.dailyCalorieTarget || 0,
+            });
+          }
+        }, (error) => {
+        });
+        unsubscribeRef.current = actualUnsubscribe;
+      }
+    };
 
 
     async function fetchLatestMeal(userId: string) {
@@ -76,10 +116,22 @@ export default function HomePage() {
                 ) : (
                     <View>
                         <Text style={styles.noMealsText}>No meals recorded yet</Text>
-                        <Text style={styles.noMealsText}>eat healthy and waste little</Text>
+                        <Text style={styles.noMealsText}>Eat healthy and waste little</Text>
                     </View>
                 )}
             </View>
+
+            {profile && (
+                <View style={styles.healthInfoContainer}>
+                    <Text style={styles.healthInfoText}>
+                        Hello {profile.username}, you want to {profile.healthGoals.toLowerCase()}, 
+                        and you have these dietary restrictions: {profile.dietaryRestrictions || 'None'}.
+                    </Text>
+                    <Text style={styles.healthInfoText}>
+                        Keep up eating healthy and wasting little!
+                    </Text>
+                </View>
+            )}
         </View>
     )
 }
@@ -137,5 +189,17 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         color: 'forestgreen',
         textAlign: 'center',
+    },
+    healthInfoContainer: {
+        padding: 20,
+        backgroundColor: '#e8f5e9',
+        borderRadius: 10,
+        marginTop: 20,
+    },
+    healthInfoText: {
+        fontSize: 20,
+        color: '#2e7d32',
+        textAlign: 'center',
+        marginBottom: 10,
     },
 })
