@@ -1,0 +1,134 @@
+{
+    "vision_analysis": {
+        "tags": [
+            {
+                "name": "tin can",
+                "confidence": 0.9877277612686157
+            },
+            {
+                "name": "aluminum can",
+                "confidence": 0.9732983708381653
+            },
+            {
+                "name": "beverage can",
+                "confidence": 0.9618810415267944
+            },
+            {
+                "name": "drink",
+                "confidence": 0.9122029542922974
+            },
+            {
+                "name": "tin",
+                "confidence": 0.8976742029190063
+            },
+            {
+                "name": "carbonated soft drinks",
+                "confidence": 0.8817819356918335
+            },
+            {
+                "name": "table",
+                "confidence": 0.8725334405899048
+            },
+            {
+                "name": "container",
+                "confidence": 0.8720670938491821
+            },
+            {
+                "name": "soft drink",
+                "confidence": 0.8665650486946106
+            },
+            {
+                "name": "cola",
+                "confidence": 0.8458561301231384
+            },
+            {
+                "name": "can",
+                "confidence": 0.7664326429367065
+            },
+            {
+                "name": "indoor",
+                "confidence": 0.7467622756958008
+            },
+            {
+                "name": "food",
+                "confidence": 0.6946653127670288
+            },
+            {
+                "name": "beer",
+                "confidence": 0.5295998454093933
+            }
+        ],
+        "objects": [],
+        "description": {
+            "captions": [
+                {
+                    "text": "a can of soda on a table",
+                    "confidence": 0.4805453419685364
+                }
+            ],
+            "tags": [
+                "table",
+                "cup",
+                "coffee",
+                "indoor",
+                "drink",
+                "meal"
+            ]
+        }
+    },
+    "nutrition_analysis": {
+        "nutritional_analysis": {
+            "estimated_calories": {
+                "range": "140-180 kcal",
+                "notes": "Calories can vary based on the brand and whether it's regular or diet soda."
+            },
+            "macronutrient_breakdown": {
+                "protein": "0g",
+                "carbohydrates": "39-46g (primarily from sugars)",
+                "fat": "0g",
+                "notes": "Most sodas contain no protein or fat, with carbohydrates coming almost entirely from added sugars."
+            },
+            "key_vitamins_and_minerals": {
+                "list": [
+                    "None significant",
+                    "Some colas may contain trace amounts of phosphorus or caffeine."
+                ],
+                "notes": "Sodas generally lack meaningful vitamins or minerals. Diet versions may have artificial additives."
+            },
+            "health_benefits": {
+                "list": [
+                    "Quick source of energy due to high sugar content (though not recommended for sustained energy)",
+                    "May provide temporary mental alertness if it contains caffeine."
+                ],
+                "notes": "Overall, sodas offer minimal health benefits and are considered empty-calorie beverages."
+            },
+            "potential_allergens_or_concerns": {
+                "allergens": [
+                    "None common (check label for specific ingredients if concerned)"
+                ],
+                "dietary_concerns": [
+                    "High sugar content linked to obesity, diabetes, and tooth decay",
+                    "Acidity can erode tooth enamel",
+                    "Caffeine content may be a concern for some individuals",
+                    "Artificial colors or sweeteners in some brands",
+                    "Not suitable for low-sugar or low-carb diets"
+                ]
+            },
+            "healthier_recommendations": {
+                "alternatives": [
+                    "Sparkling water with a splash of 100% fruit juice",
+                    "Infused water with fresh fruits or herbs",
+                    "Unsweetened iced tea",
+                    "Low-fat milk or plant-based milk alternatives"
+                ],
+                "tips": [
+                    "If consuming soda, choose smaller portion sizes",
+                    "Opt for diet versions to reduce sugar (but be mindful of artificial sweeteners)",
+                    "Use a straw to minimize contact with teeth",
+                    "Balance with water consumption to stay hydrated"
+                ],
+                "general_advice": "Sodas should be an occasional treat rather than a daily beverage. Focusing on hydration with water and nutrient-dense drinks is recommended for overall health."
+            }
+        }
+    }
+}

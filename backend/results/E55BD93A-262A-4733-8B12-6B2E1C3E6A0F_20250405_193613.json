@@ -1,0 +1,100 @@
+{
+    "vision_analysis": {
+        "tags": [
+            {
+                "name": "text",
+                "confidence": 0.999998927116394
+            },
+            {
+                "name": "screenshot",
+                "confidence": 0.9456597566604614
+            },
+            {
+                "name": "menu",
+                "confidence": 0.9240550398826599
+            },
+            {
+                "name": "font",
+                "confidence": 0.9050607681274414
+            },
+            {
+                "name": "number",
+                "confidence": 0.8881853818893433
+            }
+        ],
+        "objects": [],
+        "description": {
+            "captions": [
+                {
+                    "text": "text",
+                    "confidence": 0.702727198600769
+                }
+            ],
+            "tags": [
+                "text"
+            ]
+        },
+        "read_text": "MENU APPETIZERS PRIX FIXE Shrimp Remoulade/Shrimp Cocktail . . . 16.00 Three Courses: 45 Spicy Lobster . .19.00 First Course: Lobster Bisque Baked Escargot . 16.00 Entr\u00e9e: Cornish Game Hen, Seared Ahi Tuna . 17.00 Grilled Salmon or 12 oz Sirloin Prosciutto Wrapped Mozzarella . 14.00 Dessert: Bananas Foster STEAK CUTS SALADS AND SOUPS Filet Mignon, 8 ounce .38.00 Spinach Salad . 9.50 Apples, goat cheese, apple cider dressing Filet Mignon, 12 ounce . 49.00 Caprese Salad . . 7.50 Rib Eye Steak, 18 ounce . 39.00 Ripe tomato with fresh mozzarella and basil Porterhouse for Two . 40.00 French Onion Soup . .. . . . . . 5.00"
+    },
+    "menu_recommendations": {
+        "recommendations": [
+            {
+                "menu_item": "Caprese Salad",
+                "reason": "Vegetarian-friendly with fresh mozzarella, ripe tomatoes, and basil. Provides protein from cheese and vitamins from tomatoes.",
+                "healthier_modifications": "Request less mozzarella to reduce saturated fat, or ask for balsamic glaze instead of oil if available."
+            },
+            {
+                "menu_item": "Spinach Salad",
+                "reason": "Vegetarian and nutrient-dense with spinach, apples, and goat cheese. Offers fiber, vitamins, and moderate protein.",
+                "healthier_modifications": "Request apple cider dressing on the side to control portion, and consider reducing goat cheese amount for lower calories."
+            }
+        ],
+        "items_to_avoid": [
+            {
+                "menu_item": "Shrimp Remoulade/Shrimp Cocktail",
+                "reason": "Contains seafood, which doesn't align with vegetarian dietary restrictions."
+            },
+            {
+                "menu_item": "Spicy Lobster",
+                "reason": "Contains seafood, which doesn't align with vegetarian dietary restrictions."
+            },
+            {
+                "menu_item": "Baked Escargot",
+                "reason": "Contains snails, which doesn't align with vegetarian dietary restrictions."
+            },
+            {
+                "menu_item": "Cornish Game Hen",
+                "reason": "Contains poultry, which doesn't align with vegetarian dietary restrictions."
+            },
+            {
+                "menu_item": "Seared Ahi Tuna",
+                "reason": "Contains fish, which doesn't align with vegetarian dietary restrictions."
+            },
+            {
+                "menu_item": "Grilled Salmon",
+                "reason": "Contains fish, which doesn't align with vegetarian dietary restrictions."
+            },
+            {
+                "menu_item": "12 oz Sirloin",
+                "reason": "Contains beef, which doesn't align with vegetarian dietary restrictions."
+            },
+            {
+                "menu_item": "Prosciutto Wrapped Mozzarella",
+                "reason": "Contains prosciutto (meat), which doesn't align with vegetarian dietary restrictions."
+            },
+            {
+                "menu_item": "Filet Mignon (8 oz and 12 oz)",
+                "reason": "Contains beef, which doesn't align with vegetarian dietary restrictions."
+            },
+            {
+                "menu_item": "Rib Eye Steak",
+                "reason": "Contains beef, which doesn't align with vegetarian dietary restrictions."
+            },
+            {
+                "menu_item": "Porterhouse for Two",
+                "reason": "Contains beef, which doesn't align with vegetarian dietary restrictions."
+            }
+        ],
+        "menu_detected": true
+    }
+}

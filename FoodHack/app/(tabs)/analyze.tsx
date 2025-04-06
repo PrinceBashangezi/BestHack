@@ -128,28 +128,6 @@ export default function FoodAnalysisScreen() {
     }
   };
 
-  // Test connection to server
-  const testConnection = async () => {
-    try {
-      const testUrl = API_URL.replace('/upload', '/');
-      console.log(`Testing connection to: ${testUrl}`);
-      
-      const response = await fetch(testUrl);
-      const text = await response.text();
-      
-      Alert.alert(
-        'Connection Test',
-        `Status: ${response.status}\nResponse: ${text.substring(0, 100)}...`
-      );
-    } catch (error) {
-      console.error('Test connection error:', error);
-      Alert.alert(
-        'Connection Error',
-        `Could not connect: ${error.message}\nURL: ${API_URL.replace('/upload', '/')}`
-      );
-    }
-  };
-
   // Format nutritional value safely with proper type handling
   const NutritionItem = ({ label, value }: { label: string, value: any }) => {
     let displayValue: string;
@@ -225,18 +203,10 @@ export default function FoodAnalysisScreen() {
           buttonStyle={[styles.button, styles.cameraButtonStyle]}
         />
         <Button 
-          title="Choose from Gallery" 
+          title="Gallery" 
           onPress={pickImage} 
           icon={{ name: 'image', type: 'font-awesome', color: 'white', size: 18 }}
           buttonStyle={[styles.button, styles.galleryButtonStyle]}
-        />
-      </ThemedView>
-      
-      <ThemedView style={[styles.buttonContainer, { marginTop: -8 }]}>
-        <Button
-          title="Test Connection" 
-          onPress={testConnection}
-          buttonStyle={{ backgroundColor: '#555555', height: 40 }}
         />
       </ThemedView>
       

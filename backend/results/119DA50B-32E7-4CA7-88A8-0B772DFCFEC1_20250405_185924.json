@@ -1,0 +1,72 @@
+{
+    "vision_analysis": {
+        "tags": [
+            {
+                "name": "text",
+                "confidence": 0.9999939203262329
+            },
+            {
+                "name": "menu",
+                "confidence": 0.968641996383667
+            },
+            {
+                "name": "plant",
+                "confidence": 0.8783111572265625
+            },
+            {
+                "name": "flower",
+                "confidence": 0.6313220262527466
+            },
+            {
+                "name": "plaque",
+                "confidence": 0.6215620040893555
+            }
+        ],
+        "objects": [],
+        "description": {
+            "captions": [
+                {
+                    "text": "a menu screen with text",
+                    "confidence": 0.34191569685935974
+                }
+            ],
+            "tags": [
+                "text",
+                "plaque"
+            ]
+        }
+    },
+    "menu_recommendations": {
+        "recommendations": [
+            {
+                "item": "Grilled Salmon with Quinoa & Steamed Vegetables",
+                "reason": "High in protein, healthy fats (omega-3s), and fiber. Balanced macros and moderate calories.",
+                "healthier_modifications": "Request light oil or lemon dressing instead of butter."
+            },
+            {
+                "item": "Turkey Avocado Wrap (Whole Wheat)",
+                "reason": "Lean protein, healthy fats, and whole grains provide sustained energy without excess calories.",
+                "healthier_modifications": "Skip mayo or opt for mustard; add extra veggies."
+            },
+            {
+                "item": "Buddha Bowl (Greens, Chickpeas, Sweet Potato, Tahini)",
+                "reason": "Plant-based protein, complex carbs, and nutrient-dense ingredients for a balanced meal.",
+                "healthier_modifications": "Ask for tahini on the side to control portion."
+            }
+        ],
+        "items_to_avoid": [
+            {
+                "item": "Deep-Fried Appetizers (e.g., Mozzarella Sticks, Onion Rings)",
+                "reason": "High in empty calories, unhealthy fats, and low nutritional value."
+            },
+            {
+                "item": "Creamy Pasta Dishes (e.g., Fettuccine Alfredo)",
+                "reason": "Excess refined carbs and saturated fats disrupt balance and calorie goals."
+            },
+            {
+                "item": "Sugary Cocktails/Desserts (e.g., Margarita, Cheesecake)",
+                "reason": "Added sugars spike blood sugar and provide little satiety."
+            }
+        ]
+    }
+}

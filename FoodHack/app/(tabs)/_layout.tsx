@@ -1,7 +1,6 @@
 import { Tabs } from 'expo-router';
 import React from 'react';
 import { Ionicons } from '@expo/vector-icons';
-import { IconSymbol } from '@/components/ui/IconSymbol'; // Add this import
 
 export default function TabLayout() {
 
@@ -34,7 +33,18 @@ export default function TabLayout() {
         name="analyze"
         options={{
           title: 'Food Analysis',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="camera.fill" color={color} />,
+          tabBarIcon: ({ focused, color }) => (
+            <Ionicons name={focused ? "camera" : "camera-outline"} color={color} size={28} />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="menu"
+        options={{
+          title: 'Menu Scanner',
+          tabBarIcon: ({ focused, color }) => (
+            <Ionicons name={focused ? "restaurant" : "restaurant-outline"} color={color} size={28} />
+          ),
         }}
       />
       <Tabs.Screen

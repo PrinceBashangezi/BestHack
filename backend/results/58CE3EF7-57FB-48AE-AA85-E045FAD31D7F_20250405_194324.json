@@ -1,0 +1,82 @@
+{
+    "vision_analysis": {
+        "tags": [
+            {
+                "name": "text",
+                "confidence": 0.9999992847442627
+            },
+            {
+                "name": "menu",
+                "confidence": 0.9553549289703369
+            },
+            {
+                "name": "screenshot",
+                "confidence": 0.954595685005188
+            },
+            {
+                "name": "font",
+                "confidence": 0.9203848838806152
+            },
+            {
+                "name": "number",
+                "confidence": 0.9021603465080261
+            }
+        ],
+        "objects": [],
+        "description": {
+            "captions": [
+                {
+                    "text": "text",
+                    "confidence": 0.5574016571044922
+                }
+            ],
+            "tags": [
+                "text"
+            ]
+        },
+        "read_text": "MENU APPETIZERS PRIX FIXE Shrimp Remoulade/Shrimp Cocktail . .. 16.00 Three Courses: 45 Spicy Lobster . . 19.00 First Course: Lobster Bisque Baked Escargot . 16.00 Entr\u00e9e: Cornish Game Hen, Seared Ahi Tuna . 17.00 Grilled Salmon or 12 oz Sirloin Prosciutto Wrapped Mozzarella . 14.00 Dessert: Bananas Foster STEAK CUTS - SALADS AND SOUPS Filet Mignon, 8 ounce . . 38.00 Spinach Salad . 9.50 Apples, goat cheese, apple cider dressing Filet Mignon, 12 ounce . 49.00 Caprese Salad . . . ... . 7.50 Rib Eye Steak, 18 ounce . 39.00 Ripe tomato with fresh mozzarella and basil Porterhouse for Two . 40.00 French Onion Soup .5.00 800"
+    },
+    "menu_recommendations": {
+        "recommendations": [
+            {
+                "menu_item": "Grilled Salmon",
+                "reason": "High in omega-3 fatty acids and protein, moderate in calories, and aligns with a balanced diet.",
+                "healthier_modifications": "Request to be grilled with minimal oil and served with steamed vegetables if available."
+            },
+            {
+                "menu_item": "Seared Ahi Tuna",
+                "reason": "Lean protein source, rich in nutrients, and moderate in calories, fitting a balanced health goal.",
+                "healthier_modifications": "Request to be seared with minimal oil and served with a side of greens."
+            },
+            {
+                "menu_item": "Spinach Salad",
+                "reason": "Nutrient-dense with spinach, apples, and goat cheese, providing fiber, vitamins, and moderate calories.",
+                "healthier_modifications": "Ask for the apple cider dressing on the side to control the amount used."
+            },
+            {
+                "menu_item": "Caprese Salad",
+                "reason": "Fresh ingredients like ripe tomato and mozzarella provide a light, balanced option with moderate calories.",
+                "healthier_modifications": "Request less olive oil or balsamic glaze if typically included."
+            }
+        ],
+        "items_to_avoid": [
+            {
+                "menu_item": "Porterhouse for Two",
+                "reason": "High in calories and saturated fats, which may not align with a moderate calorie target and balanced diet."
+            },
+            {
+                "menu_item": "Rib Eye Steak, 18 ounce",
+                "reason": "Large portion size and high fat content make it less suitable for a moderate calorie target."
+            },
+            {
+                "menu_item": "Bananas Foster",
+                "reason": "Dessert is typically high in sugar and calories, which may not fit a balanced, moderate-calorie goal."
+            },
+            {
+                "menu_item": "Baked Escargot",
+                "reason": "Often prepared with butter, making it higher in saturated fats and calories."
+            }
+        ],
+        "menu_detected": true
+    }
+}

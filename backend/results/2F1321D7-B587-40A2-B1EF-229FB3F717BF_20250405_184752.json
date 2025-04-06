@@ -1,0 +1,98 @@
+{
+    "vision_analysis": {
+        "tags": [
+            {
+                "name": "bottle",
+                "confidence": 0.9753963947296143
+            },
+            {
+                "name": "indoor",
+                "confidence": 0.9274927377700806
+            },
+            {
+                "name": "soft drink",
+                "confidence": 0.8514092564582825
+            },
+            {
+                "name": "drink",
+                "confidence": 0.8414180278778076
+            },
+            {
+                "name": "table",
+                "confidence": 0.8164706230163574
+            },
+            {
+                "name": "wall",
+                "confidence": 0.7386044263839722
+            },
+            {
+                "name": "floor",
+                "confidence": 0.6794661283493042
+            },
+            {
+                "name": "coffee",
+                "confidence": 0.5768194794654846
+            }
+        ],
+        "objects": [],
+        "description": {
+            "captions": [
+                {
+                    "text": "a bottle of wine",
+                    "confidence": 0.42680343985557556
+                }
+            ],
+            "tags": [
+                "indoor",
+                "wall"
+            ]
+        }
+    },
+    "nutrition_analysis": {
+        "nutritional_analysis": {
+            "estimated_calories": {
+                "range": "120-150 calories per 5 oz (148 ml) serving",
+                "notes": "Calories can vary based on wine type (e.g., red, white, dessert)."
+            },
+            "macronutrient_breakdown": {
+                "protein": "0.1-0.3g per serving (negligible)",
+                "carbs": "3-4g per serving (primarily from residual sugars)",
+                "fat": "0g (none)",
+                "notes": "Wine is not a significant source of macronutrients."
+            },
+            "key_vitamins_and_minerals": {
+                "present": [
+                    "Potassium (small amounts)",
+                    "Iron (trace amounts in red wine)",
+                    "Antioxidants (e.g., resveratrol in red wine, flavonoids)"
+                ],
+                "notes": "Wine contains minimal vitamins/minerals but may offer bioactive compounds."
+            },
+            "health_benefits": {
+                "potential_benefits": [
+                    "Antioxidants in red wine may support heart health (in moderation).",
+                    "Resveratrol may have anti-inflammatory properties.",
+                    "Low-calorie alternative to sugary cocktails (if consumed in moderation)."
+                ],
+                "notes": "Benefits are dose-dependent and may not outweigh risks for certain individuals."
+            },
+            "allergens_dietary_concerns": {
+                "allergens": [
+                    "Sulfites (common in wine, may trigger allergies/asthma).",
+                    "Histamines (higher in red wine, may cause reactions in sensitive individuals)."
+                ],
+                "other_concerns": [
+                    "Alcohol content (not suitable for children, pregnant individuals, or those avoiding alcohol).",
+                    "High intake linked to liver disease, addiction, and other health risks."
+                ]
+            },
+            "healthier_recommendations": [
+                "Choose dry wines (lower sugar content) over sweet/dessert wines.",
+                "Limit to 1 serving (5 oz) per day for women, 2 for men (per USDA guidelines).",
+                "Pair with water to reduce overall alcohol consumption.",
+                "Avoid if managing conditions like diabetes, liver disease, or alcohol dependency.",
+                "Opt for antioxidant-rich foods (e.g., berries, nuts) instead of relying on wine for benefits."
+            ]
+        }
+    }
+}

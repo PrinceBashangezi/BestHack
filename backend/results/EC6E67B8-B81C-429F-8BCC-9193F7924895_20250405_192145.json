@@ -1,0 +1,61 @@
+{
+    "vision_analysis": {
+        "tags": [
+            {
+                "name": "floor",
+                "confidence": 0.9385266304016113
+            },
+            {
+                "name": "tan",
+                "confidence": 0.9021362066268921
+            },
+            {
+                "name": "plywood",
+                "confidence": 0.8965181708335876
+            },
+            {
+                "name": "indoor",
+                "confidence": 0.8890661001205444
+            },
+            {
+                "name": "wood",
+                "confidence": 0.8778029680252075
+            },
+            {
+                "name": "wooden",
+                "confidence": 0.6583467125892639
+            },
+            {
+                "name": "design",
+                "confidence": 0.40157264471054077
+            }
+        ],
+        "objects": [],
+        "description": {
+            "captions": [
+                {
+                    "text": "a shadow on a wall",
+                    "confidence": 0.37347325682640076
+                }
+            ],
+            "tags": []
+        }
+    },
+    "menu_recommendations": {
+        "recommendations": [
+            {
+                "menu_item": "Unable to determine - unclear menu content",
+                "reason": "The provided menu description ('a shadow on a wall') doesn't contain identifiable food items. Without clear menu items, specific recommendations cannot be made.",
+                "healthier_modifications": "N/A"
+            }
+        ],
+        "items_to_avoid": {
+            "reason": "No identifiable menu items were provided in the description to analyze for potential concerns."
+        },
+        "suggestions": [
+            "Please provide a clearer menu description or photo containing actual dish names/ingredients",
+            "For balanced, moderate-calorie meals, look for dishes with: lean protein, whole grains, and vegetables",
+            "Avoid items described as fried, creamy, or heavily processed when possible"
+        ]
+    }
+}

@@ -1,0 +1,64 @@
+{
+    "vision_analysis": {
+        "tags": [
+            {
+                "name": "text",
+                "confidence": 0.9999980926513672
+            },
+            {
+                "name": "menu",
+                "confidence": 0.9616726636886597
+            },
+            {
+                "name": "screenshot",
+                "confidence": 0.9347353577613831
+            }
+        ],
+        "objects": [],
+        "description": {
+            "captions": [
+                {
+                    "text": "a screenshot of a computer",
+                    "confidence": 0.5045192241668701
+                }
+            ],
+            "tags": [
+                "text",
+                "plaque"
+            ]
+        }
+    },
+    "menu_recommendations": {
+        "recommendations": [
+            {
+                "item": "Grilled Vegetable Salad",
+                "reason": "High in fiber and nutrients, low in calories, and aligns with vegetarian preferences. The grilled vegetables provide flavor without excessive oil.",
+                "modifications": "Request dressing on the side to control calorie intake, and ask for minimal or no cheese to reduce fat."
+            },
+            {
+                "item": "Vegetable Stir-Fry with Tofu",
+                "reason": "Tofu is a great plant-based protein source, and stir-fried vegetables are nutrient-dense. This dish is typically low in calories if prepared with minimal oil.",
+                "modifications": "Request less oil or sauce, and opt for brown rice instead of white rice for added fiber."
+            },
+            {
+                "item": "Lentil Soup",
+                "reason": "Lentils are rich in protein and fiber, which promote satiety and support weight loss. Soup is generally low in calories and filling.",
+                "modifications": "Ask for no cream or butter to keep the dish light and low-calorie."
+            }
+        ],
+        "items_to_avoid": [
+            {
+                "item": "Vegetable Lasagna",
+                "reason": "Often high in cheese and refined carbs, which can be calorie-dense and hinder weight loss goals."
+            },
+            {
+                "item": "Fried Vegetable Tempura",
+                "reason": "Deep-fried foods are high in unhealthy fats and calories, which are not ideal for weight loss."
+            },
+            {
+                "item": "Creamy Pasta Dishes",
+                "reason": "Typically high in calories, saturated fats, and refined carbs, making them unsuitable for low-calorie and weight loss goals."
+            }
+        ]
+    }
+}

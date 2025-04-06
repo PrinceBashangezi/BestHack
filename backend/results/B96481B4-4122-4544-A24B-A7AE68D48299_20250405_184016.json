@@ -1,0 +1,113 @@
+{
+    "vision_analysis": {
+        "tags": [
+            {
+                "name": "human face",
+                "confidence": 0.9968483448028564
+            },
+            {
+                "name": "person",
+                "confidence": 0.9860250353813171
+            },
+            {
+                "name": "hairpiece",
+                "confidence": 0.9682281017303467
+            },
+            {
+                "name": "eyebrow",
+                "confidence": 0.9555804133415222
+            },
+            {
+                "name": "indoor",
+                "confidence": 0.94416344165802
+            },
+            {
+                "name": "selfie",
+                "confidence": 0.9266705513000488
+            },
+            {
+                "name": "jaw",
+                "confidence": 0.9261372089385986
+            },
+            {
+                "name": "forehead",
+                "confidence": 0.9242641925811768
+            },
+            {
+                "name": "chin",
+                "confidence": 0.9133442640304565
+            },
+            {
+                "name": "cheek",
+                "confidence": 0.886524498462677
+            },
+            {
+                "name": "neck",
+                "confidence": 0.8781450986862183
+            },
+            {
+                "name": "skin",
+                "confidence": 0.873131513595581
+            },
+            {
+                "name": "lip",
+                "confidence": 0.872516393661499
+            },
+            {
+                "name": "wall",
+                "confidence": 0.8681395649909973
+            },
+            {
+                "name": "throat",
+                "confidence": 0.8618083000183105
+            },
+            {
+                "name": "eyelash",
+                "confidence": 0.8485714197158813
+            },
+            {
+                "name": "woman",
+                "confidence": 0.6465752720832825
+            },
+            {
+                "name": "hair",
+                "confidence": 0.5748947858810425
+            }
+        ],
+        "objects": [
+            {
+                "object": "person",
+                "confidence": 0.947
+            }
+        ],
+        "description": {
+            "captions": [
+                {
+                    "text": "a man with curly hair",
+                    "confidence": 0.5371765494346619
+                }
+            ],
+            "tags": [
+                "person",
+                "wall",
+                "indoor",
+                "man"
+            ]
+        }
+    },
+    "nutrition_analysis": {
+        "nutritional_analysis": {
+            "estimated_calories": "0 (non-food items detected)",
+            "macronutrient_breakdown": {
+                "protein": "0g",
+                "carbs": "0g",
+                "fat": "0g"
+            },
+            "key_vitamins_and_minerals": "None (non-food items detected)",
+            "health_benefits": "None (non-food items detected. Description suggests a human face, not a meal.)",
+            "potential_allergens_or_concerns": "None (no edible items detected)",
+            "recommendations_for_healthier_meal": "Please upload an image of actual food for nutritional analysis. Current input describes a person, not a meal."
+        },
+        "notes": "The detected items (forehead, cheek, hair, etc.) are human facial features, not food. Nutritional analysis requires edible items."
+    }
+}

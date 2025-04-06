@@ -1,0 +1,76 @@
+{
+    "vision_analysis": {
+        "tags": [
+            {
+                "name": "text",
+                "confidence": 0.9999988079071045
+            },
+            {
+                "name": "screenshot",
+                "confidence": 0.9617356061935425
+            },
+            {
+                "name": "menu",
+                "confidence": 0.911403238773346
+            },
+            {
+                "name": "font",
+                "confidence": 0.8902552127838135
+            },
+            {
+                "name": "number",
+                "confidence": 0.8876758813858032
+            }
+        ],
+        "objects": [
+            {
+                "object": "book",
+                "confidence": 0.618
+            }
+        ],
+        "description": {
+            "captions": [
+                {
+                    "text": "text",
+                    "confidence": 0.3876579701900482
+                }
+            ],
+            "tags": [
+                "text"
+            ]
+        }
+    },
+    "menu_recommendations": {
+        "recommendations": [
+            {
+                "item": "Grilled Salmon with Quinoa and Steamed Vegetables",
+                "reason": "This dish is a great choice for a balanced meal. The salmon provides high-quality protein and omega-3 fatty acids, the quinoa offers complex carbohydrates and fiber, and the steamed vegetables add essential vitamins and minerals. It aligns well with a moderate calorie target.",
+                "modifications": "Request for the salmon to be grilled without excess oil and ask for the dressing or sauce to be served on the side to control added calories and sodium."
+            },
+            {
+                "item": "Chicken and Avocado Salad with Mixed Greens",
+                "reason": "This salad is a balanced option with lean protein from the chicken, healthy fats from the avocado, and a variety of nutrients from the mixed greens. It's moderate in calories and supports overall health goals.",
+                "modifications": "Opt for a vinaigrette dressing instead of creamy dressings to reduce calorie intake, and ask for the dressing on the side. You can also request to skip any croutons or fried toppings to keep the dish healthier."
+            },
+            {
+                "item": "Vegetable Stir-Fry with Tofu and Brown Rice",
+                "reason": "This dish is packed with plant-based protein from tofu, fiber from the vegetables, and complex carbohydrates from brown rice. It's a well-rounded meal that fits a moderate calorie target and provides a variety of nutrients.",
+                "modifications": "Request for the stir-fry to be cooked with minimal oil and ask for low-sodium soy sauce to reduce sodium intake. You can also ask for extra vegetables to increase the fiber content."
+            }
+        ],
+        "items_to_avoid": [
+            {
+                "item": "Deep-Fried Chicken Wings",
+                "reason": "This item is high in unhealthy fats and calories due to the deep-frying process. It doesn't align with a balanced diet or moderate calorie target."
+            },
+            {
+                "item": "Creamy Pasta Alfredo",
+                "reason": "This dish is typically high in saturated fats and refined carbohydrates, which can be excessive for a moderate calorie target and doesn't support balanced nutrition."
+            },
+            {
+                "item": "Large Pepperoni Pizza",
+                "reason": "Pizza with high-fat toppings like pepperoni and excessive cheese can be calorie-dense and high in saturated fats, making it less suitable for a balanced and moderate-calorie meal."
+            }
+        ]
+    }
+}

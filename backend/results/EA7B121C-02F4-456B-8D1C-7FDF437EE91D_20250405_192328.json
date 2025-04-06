@@ -1,0 +1,71 @@
+{
+    "vision_analysis": {
+        "tags": [
+            {
+                "name": "text",
+                "confidence": 0.9999987483024597
+            },
+            {
+                "name": "screenshot",
+                "confidence": 0.9546128511428833
+            },
+            {
+                "name": "menu",
+                "confidence": 0.9149423837661743
+            },
+            {
+                "name": "font",
+                "confidence": 0.893012523651123
+            },
+            {
+                "name": "number",
+                "confidence": 0.8690990209579468
+            }
+        ],
+        "objects": [],
+        "description": {
+            "captions": [
+                {
+                    "text": "text",
+                    "confidence": 0.4749833345413208
+                }
+            ],
+            "tags": [
+                "text"
+            ]
+        }
+    },
+    "menu_recommendations": {
+        "recommendations": [
+            {
+                "item": "Grilled Salmon with Quinoa and Steamed Vegetables",
+                "reason": "This dish is a great choice for a balanced meal, providing lean protein from the salmon, complex carbohydrates from the quinoa, and essential vitamins and minerals from the vegetables. It aligns well with a moderate calorie target.",
+                "modifications": "Request for the salmon to be grilled without excess oil and ask for any sauces or dressings to be served on the side to control calorie intake."
+            },
+            {
+                "item": "Chicken and Avocado Salad",
+                "reason": "This salad offers a good balance of protein from the chicken and healthy fats from the avocado. It's likely to be moderate in calories and provides a variety of nutrients from the greens and other vegetables.",
+                "modifications": "Opt for a vinaigrette dressing instead of creamy dressings to reduce calorie and fat intake. Ask for dressing on the side to control the amount used."
+            },
+            {
+                "item": "Vegetable Stir-Fry with Tofu",
+                "reason": "A vegetable stir-fry with tofu is a balanced option that provides plant-based protein, fiber, and a variety of vitamins and minerals. It's typically moderate in calories and can be very satisfying.",
+                "modifications": "Request for the stir-fry to be cooked with minimal oil and ask for low-sodium soy sauce to reduce sodium intake."
+            }
+        ],
+        "items_to_avoid": [
+            {
+                "item": "Deep-Fried Appetizers",
+                "reason": "These are typically high in unhealthy fats and calories, which do not align with a balanced diet or moderate calorie target."
+            },
+            {
+                "item": "Creamy Pasta Dishes",
+                "reason": "Pasta dishes with heavy cream sauces are often high in calories and saturated fats, making them less ideal for someone aiming for a balanced and moderate-calorie meal."
+            },
+            {
+                "item": "Desserts High in Sugar",
+                "reason": "Items like cheesecake or chocolate lava cake are high in sugar and calories, which can disrupt a balanced diet and exceed a moderate calorie target."
+            }
+        ]
+    }
+}

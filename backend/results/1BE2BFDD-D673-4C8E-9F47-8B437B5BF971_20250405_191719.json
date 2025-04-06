@@ -1,0 +1,76 @@
+{
+    "vision_analysis": {
+        "tags": [
+            {
+                "name": "indoor",
+                "confidence": 0.9543140530586243
+            },
+            {
+                "name": "floor",
+                "confidence": 0.9324276447296143
+            },
+            {
+                "name": "laptop",
+                "confidence": 0.8842482566833496
+            },
+            {
+                "name": "screenshot",
+                "confidence": 0.8423248529434204
+            },
+            {
+                "name": "table",
+                "confidence": 0.8195722103118896
+            },
+            {
+                "name": "design",
+                "confidence": 0.5182783007621765
+            }
+        ],
+        "objects": [],
+        "description": {
+            "captions": [
+                {
+                    "text": "a white board on a wood floor",
+                    "confidence": 0.4366436302661896
+                }
+            ],
+            "tags": [
+                "text",
+                "indoor"
+            ]
+        }
+    },
+    "menu_recommendations": {
+        "recommendations": [
+            {
+                "item": "Grilled Chicken Salad",
+                "reason": "A balanced option that provides lean protein, fresh vegetables, and healthy fats if it includes ingredients like avocado or nuts. It aligns with a moderate calorie target and supports overall health.",
+                "modifications": "Request dressing on the side to control portion, opt for olive oil-based dressings, and add extra vegetables for fiber."
+            },
+            {
+                "item": "Quinoa Bowl with Vegetables and Salmon",
+                "reason": "This dish offers a good balance of complex carbohydrates (quinoa), healthy fats (salmon), and vegetables. It's nutrient-dense and fits well within a moderate calorie range.",
+                "modifications": "Ask for light seasoning to reduce sodium, and ensure the salmon is grilled or baked rather than fried."
+            },
+            {
+                "item": "Turkey and Avocado Wrap on Whole Wheat",
+                "reason": "Provides lean protein (turkey), healthy fats (avocado), and whole grains (whole wheat wrap). It's a satisfying yet moderate-calorie option that supports balanced nutrition.",
+                "modifications": "Request no mayo or creamy sauces, and add extra veggies like spinach or tomatoes for more nutrients."
+            }
+        ],
+        "items_to_avoid": [
+            {
+                "item": "Fried Appetizers (e.g., Mozzarella Sticks, Onion Rings)",
+                "reason": "High in unhealthy fats and calories, which don't align with a balanced or moderate-calorie goal."
+            },
+            {
+                "item": "Creamy Pasta Dishes (e.g., Fettuccine Alfredo)",
+                "reason": "Typically high in saturated fats and refined carbohydrates, making them less suitable for a balanced diet."
+            },
+            {
+                "item": "Large Portion Desserts (e.g., Chocolate Cake, Cheesecake)",
+                "reason": "High in sugar and calories, which can disrupt a moderate-calorie target and balanced nutrition."
+            }
+        ]
+    }
+}

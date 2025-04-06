@@ -1,0 +1,65 @@
+{
+    "vision_analysis": {
+        "tags": [
+            {
+                "name": "text",
+                "confidence": 0.9999992847442627
+            },
+            {
+                "name": "menu",
+                "confidence": 0.9727526903152466
+            },
+            {
+                "name": "screenshot",
+                "confidence": 0.922114372253418
+            }
+        ],
+        "objects": [],
+        "description": {
+            "captions": [
+                {
+                    "text": "a screenshot of a computer",
+                    "confidence": 0.4825621247291565
+                }
+            ],
+            "tags": [
+                "text",
+                "plaque"
+            ]
+        }
+    },
+    "menu_recommendations": {
+        "recommendations": [
+            {
+                "item": "Grilled Salmon with Quinoa and Steamed Vegetables",
+                "reason": "Salmon provides healthy omega-3 fatty acids, quinoa is a complete protein and fiber source, and vegetables add vitamins and minerals. This meal is balanced and moderate in calories.",
+                "modifications": "Request olive oil or dressing on the side to control added fats."
+            },
+            {
+                "item": "Turkey and Avocado Wrap (whole wheat)",
+                "reason": "Lean turkey provides protein, avocado adds healthy fats, and whole wheat offers fiber. A balanced option when paired with a side salad.",
+                "modifications": "Opt for mustard instead of mayo to reduce saturated fat, and request no cheese if calorie-conscious."
+            },
+            {
+                "item": "Buddha Bowl (mixed greens, chickpeas, roasted sweet potatoes, tahini dressing)",
+                "reason": "Plant-based protein from chickpeas, complex carbs from sweet potatoes, and healthy fats from tahini create a nutrient-dense, balanced meal.",
+                "modifications": "Ask for dressing on the side and limit added nuts/seeds to control calories."
+            }
+        ],
+        "items_to_avoid": [
+            {
+                "item": "Fried Chicken Basket with Fries",
+                "reason": "High in unhealthy fats, refined carbs, and calories without balanced nutrition."
+            },
+            {
+                "item": "Creamy Pasta Alfredo",
+                "reason": "Excessively high in saturated fat and refined carbs with minimal protein or veggies."
+            },
+            {
+                "item": "Large Pepperoni Pizza",
+                "reason": "Processed meats and high-fat cheese make this calorie-dense and unbalanced."
+            }
+        ],
+        "notes": "Since no specific menu items were provided in the input, these are general recommendations based on common restaurant offerings that fit 'balanced moderate-calorie' goals. Always check portion sizes to align with calorie targets."
+    }
+}

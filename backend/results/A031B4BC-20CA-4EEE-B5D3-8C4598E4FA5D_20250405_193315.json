@@ -1,0 +1,204 @@
+{
+    "vision_analysis": {
+        "tags": [
+            {
+                "name": "fruit",
+                "confidence": 0.9950426816940308
+            },
+            {
+                "name": "natural foods",
+                "confidence": 0.9932738542556763
+            },
+            {
+                "name": "produce",
+                "confidence": 0.98674076795578
+            },
+            {
+                "name": "local food",
+                "confidence": 0.9787598252296448
+            },
+            {
+                "name": "whole food",
+                "confidence": 0.968989372253418
+            },
+            {
+                "name": "food",
+                "confidence": 0.9594334363937378
+            },
+            {
+                "name": "diet food",
+                "confidence": 0.9575039148330688
+            },
+            {
+                "name": "superfood",
+                "confidence": 0.9572576284408569
+            },
+            {
+                "name": "vegan nutrition",
+                "confidence": 0.9550620913505554
+            },
+            {
+                "name": "accessory fruit",
+                "confidence": 0.9238593578338623
+            },
+            {
+                "name": "banana",
+                "confidence": 0.9184889793395996
+            },
+            {
+                "name": "apple",
+                "confidence": 0.9079239368438721
+            },
+            {
+                "name": "vegetarian food",
+                "confidence": 0.9063712358474731
+            },
+            {
+                "name": "mcintosh",
+                "confidence": 0.9049097299575806
+            },
+            {
+                "name": "saba banana",
+                "confidence": 0.8853462934494019
+            },
+            {
+                "name": "peel",
+                "confidence": 0.8684642910957336
+            },
+            {
+                "name": "cooking plantain",
+                "confidence": 0.8682880401611328
+            },
+            {
+                "name": "granny smith",
+                "confidence": 0.8612819910049438
+            },
+            {
+                "name": "food group",
+                "confidence": 0.8427802324295044
+            },
+            {
+                "name": "indoor",
+                "confidence": 0.8405613899230957
+            }
+        ],
+        "objects": [
+            {
+                "object": "Apple",
+                "confidence": 0.85
+            },
+            {
+                "object": "Banana",
+                "confidence": 0.621
+            },
+            {
+                "object": "Apple",
+                "confidence": 0.702
+            },
+            {
+                "object": "Apple",
+                "confidence": 0.69
+            }
+        ],
+        "description": {
+            "captions": [
+                {
+                    "text": "a group of fruits sit on a counter top",
+                    "confidence": 0.44929930567741394
+                }
+            ],
+            "tags": [
+                "apple",
+                "banana",
+                "fruit",
+                "fresh"
+            ]
+        },
+        "read_text": ""
+    },
+    "nutrition_analysis": {
+        "nutritional_analysis": {
+            "estimated_calories": {
+                "range": "50-150 kcal per serving (varies by fruit type and size)",
+                "details": {
+                    "Apple (medium)": "95 kcal",
+                    "Banana (medium)": "105 kcal",
+                    "Granny Smith (medium)": "80 kcal",
+                    "Saba banana (medium)": "120 kcal",
+                    "Cooking plantain (medium)": "180 kcal"
+                }
+            },
+            "macronutrient_breakdown": {
+                "protein": {
+                    "range": "0.5-2g per serving",
+                    "details": "Fruits are generally low in protein but provide small amounts."
+                },
+                "carbohydrates": {
+                    "range": "15-40g per serving",
+                    "details": "Primary macronutrient in fruits, mainly from natural sugars (fructose) and fiber."
+                },
+                "fat": {
+                    "range": "0-0.5g per serving",
+                    "details": "Most fruits are naturally fat-free or contain negligible amounts."
+                },
+                "fiber": {
+                    "range": "2-5g per serving",
+                    "details": "Important for digestive health and satiety."
+                }
+            },
+            "key_vitamins_and_minerals": {
+                "vitamins": [
+                    "Vitamin C (apples, bananas)",
+                    "Vitamin B6 (bananas)",
+                    "Vitamin A (apples, especially in the peel)",
+                    "Folate (bananas)"
+                ],
+                "minerals": [
+                    "Potassium (bananas, plantains)",
+                    "Magnesium (bananas)",
+                    "Calcium (small amounts in apples)",
+                    "Iron (small amounts in apples)"
+                ],
+                "antioxidants": [
+                    "Quercetin (apples)",
+                    "Catechins (apples)",
+                    "Dopamine (bananas)"
+                ]
+            },
+            "health_benefits": [
+                "Supports heart health (fiber, potassium, antioxidants)",
+                "Aids digestion (fiber content)",
+                "Boosts immune system (Vitamin C)",
+                "May reduce risk of chronic diseases (antioxidants)",
+                "Provides natural energy (natural sugars with fiber)",
+                "Hydration (high water content in apples)"
+            ],
+            "potential_allergens_or_concerns": [
+                {
+                    "concern": "Oral Allergy Syndrome",
+                    "details": "Some individuals with pollen allergies may react to raw apples or bananas."
+                },
+                {
+                    "concern": "Latex-Fruit Syndrome",
+                    "details": "Bananas may cause reactions in people with latex allergies."
+                },
+                {
+                    "concern": "FODMAPs",
+                    "details": "Apples and bananas contain FODMAPs that may irritate some IBS sufferers."
+                },
+                {
+                    "concern": "Blood Sugar Impact",
+                    "details": "High glycemic index in very ripe bananas may concern diabetics."
+                }
+            ],
+            "healthier_recommendations": [
+                "Include a variety of colors for diverse phytonutrients",
+                "Combine with a protein source (e.g., nut butter) for balanced snack",
+                "Consume with peel when possible (extra fiber and nutrients)",
+                "Choose slightly underripe bananas for lower glycemic impact",
+                "Pair with greens for a balanced smoothie",
+                "Opt for organic varieties when possible to reduce pesticide exposure"
+            ]
+        }
+    }
+}
