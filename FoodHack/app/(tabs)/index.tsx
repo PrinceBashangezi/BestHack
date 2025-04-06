@@ -35,6 +35,7 @@ export default function LoginScreen() {
     setLoading(true)
     try {
       await signInWithEmailAndPassword(auth, email, password)
+      router.navigate('/homepage')
     } catch (error: any) {
       Alert.alert('Error', error.message)
     } finally {
@@ -183,6 +184,7 @@ export default function LoginScreen() {
           <View style={[styles.verticallySpaced, styles.mt20]}>
             <Button 
               title="Sign Up" 
+              color={'forestgreen'}
               disabled={loading} 
               onPress={signUpWithEmail} 
             />

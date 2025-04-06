@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { View, Text, StyleSheet } from 'react-native'
 import { firestore, auth } from '../supabase'
 import { useEffect } from 'react'
-import { query, collection, orderBy, getDocs, limit } from "firebase/firestore"
+import { query, collection, orderBy, getDocs, limit, doc, getDoc } from "firebase/firestore"
 
 
 
@@ -13,6 +13,7 @@ export default function HomePage() {
     useEffect(() => {
         const user = auth.currentUser
         if (user) {
+        fetchUsername(user.uid)
         fetchLatestMeal(user.uid)
         setFirstName(user.displayName || null)
         }
@@ -39,24 +40,43 @@ export default function HomePage() {
         }
     }
 
+    async function fetchUsername(userId: string) {
+        try {
+        const userRef = doc(firestore, "Users", userId)
+        const docSnap = await getDoc(userRef)
+        
+        if (docSnap.exists()) {
+            const data = docSnap.data()
+            setFirstName(data.firstName || null)
+        } else {
+            console.log("No such document!")
+        }
+        } catch (error) {
+        console.error("Error fetching username:", error)
+        }
+    }
+
+
     return (
         <View>
-        <Text>Welcome {firstName || 'User'}!</Text>
-
-        <View style={styles.section}>
-            <Text style={styles.sectionTitle}>Your Latest Meal</Text>
-            {latestMeal ? (
-            <View style={styles.mealCard}>
-                <Text style={styles.mealType}>{latestMeal.mealType}</Text>
-                <Text style={styles.mealDetails}>{latestMeal.mealTaken}</Text>
-                <Text style={styles.mealTime}>
-                {new Date(latestMeal.takenAt?.seconds * 1000).toLocaleString()}
-                </Text>
+            <View style={styles.welcomeContainer}>
+                <Text style={styles.welcomeText}>Welcome {firstName || 'User'}!</Text>
             </View>
-            ) : (
-            <Text style={styles.noMealsText}>No meals recorded yet</Text>
-            )}
-        </View>
+
+            <View style={styles.section}>
+                <Text style={styles.sectionTitle}>Your Latest Meal</Text>
+                {latestMeal ? (
+                <View style={styles.mealCard}>
+                    <Text style={styles.mealType}>{latestMeal.mealType}</Text>
+                    <Text style={styles.mealDetails}>{latestMeal.mealTaken}</Text>
+                    <Text style={styles.mealTime}>
+                    {new Date(latestMeal.takenAt?.seconds * 1000).toLocaleString()}
+                    </Text>
+                </View>
+                ) : (
+                <Text style={styles.noMealsText}>No meals recorded yet</Text>
+                )}
+            </View>
         </View>
     )
 }
@@ -69,6 +89,9 @@ const styles = StyleSheet.create({
         marginBottom: 20,
     },
     sectionTitle: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        textAlign: 'center',
         fontSize: 24,
         fontWeight: 'bold',
         marginBottom: 10,
@@ -95,7 +118,21 @@ const styles = StyleSheet.create({
         color: '#888',
     },
     noMealsText: {
-        fontSize: 16,
+        justifyContent: 'center',
+        alignItems: 'center',
+        textAlign: 'center',
+        fontSize: 20,
         color: '#888',
+    },
+    welcomeContainer: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginVertical: 20,
+    },
+    welcomeText: {
+        fontSize: 28,
+        fontWeight: 'bold',
+        color: 'forestgreen',
+        textAlign: 'center',
     },
 })

@@ -134,6 +134,14 @@ export default function FoodHistory() {
     return <ActivityIndicator size="large" color="forestgreen" />;
   }
 
+  if (groupedMeals.length === 0) {
+    return (
+      <View style={styles.noDataContainer}>
+        <Text style={styles.noDataText}>No meals yet.</Text>
+      </View>
+    );
+  }
+
   return (
     <FlatList
       data={groupedMeals}
@@ -250,5 +258,17 @@ const styles = StyleSheet.create({
     fontSize: 12,
     color: '#777',
     fontStyle: 'italic',
+  },
+  noDataContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 20,
+  },
+  noDataText: {
+    fontSize: 28,
+    fontWeight: 'bold',
+    color: 'forestgreen',
+    textAlign: 'center',
   },
 });
