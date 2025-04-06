@@ -1,55 +1,49 @@
 import React, { useState } from 'react'
 import { Alert, StyleSheet, View } from 'react-native'
-import { supabase } from '../supabase'
+import { firestore, auth } from '../supabase'
+import { signInWithEmailAndPassword, createUserWithEmailAndPassword} from "firebase/auth";
 import { Button, Input } from '@rneui/themed'
 import 'react-native-url-polyfill/auto'
 import { useEffect } from 'react'
-import { Session } from '@supabase/supabase-js'
 
 export default function HomeScreen() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [loading, setLoading] = useState(false)
-  const [session, setSession] = useState<Session | null>(null)
   const [isLoggedIn, signedIn] = useState(false)
 
   useEffect(() => {
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      setSession(session)
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      if (user) {
+        signedIn(true)
+      } else {
+        signedIn(false)
+      }
     })
-    supabase.auth.onAuthStateChange((_event, session) => {
-      setSession(session)
-    })
+
+    return () => unsubscribe()
+
   }, [])
 
   async function signInWithEmail() {
     setLoading(true)
-    const { error } = await supabase.auth.signInWithPassword({
-      email: email,
-      password: password,
-    })
+    await signInWithEmailAndPassword(auth, email, password)
 
-    if (error) Alert.alert(error.message)
-    else {
-      signedIn(true)
+    const user = auth.currentUser
+    if (!user) {
+      Alert.alert('Invalid email or password')
+      signedIn(false)
+    } else {
+      signedIn(true)      
     }
-    setLoading(false)
   }
 
   async function signUpWithEmail() {
     setLoading(true)
-    const {
-      data: { session },
-      error,
-    } = await supabase.auth.signUp({
-      email: email,
-      password: password,
-    })
-
-    if (error) Alert.alert(error.message)
-    if (!session) Alert.alert('Please check your inbox for email verification!')
+    await createUserWithEmailAndPassword(auth, email,password)
     setLoading(false)
   }
+
 
   return (
     <View style={styles.container}>

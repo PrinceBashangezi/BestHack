@@ -1,29 +1,26 @@
-import { AppState } from 'react-native'
-import 'react-native-url-polyfill/auto'
-import AsyncStorage from '@react-native-async-storage/async-storage'
-import { createClient } from '@supabase/supabase-js'
+import { initializeApp } from "firebase/app";
+import { initializeAuth, getReactNativePersistence } from "firebase/auth";
+import { getFirestore, Firestore } from "firebase/firestore"; // Import Firestore methods
+import AsyncStorage from '@react-native-async-storage/async-storage'; // Import AsyncStorage for local persistence
 
-const supabaseUrl = "https://isugocizaujmyvwjxixi.supabase.co"
-const supabaseAnonKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImlzdWdvY2l6YXVqbXl2d2p4aXhpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDM4ODQ1NzAsImV4cCI6MjA1OTQ2MDU3MH0.ugvmA8ZIMtHiNOu-RO3GF69FANWJ6TPl7EpHTbS-iO4"
+const firebaseConfig = {
+  apiKey: "AIzaSyCnlOhD-SSVmtrflFjO7eWM0K2auOWUHUw",
+  authDomain: "foodhack-b663f.firebaseapp.com",
+  projectId: "foodhack-b663f",
+  storageBucket: "foodhack-b663f.firebasestorage.app",
+  messagingSenderId: "869071555125",
+  appId: "1:869071555125:web:ff88781e41cdac1e477f7c",
+  measurementId: "G-7BYWM44HSV"
+};
 
-export const supabase = createClient(supabaseUrl, supabaseAnonKey, {
-  auth: {
-    storage: AsyncStorage,
-    autoRefreshToken: true,
-    persistSession: true,
-    detectSessionInUrl: false,
-  },
-})
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+// Initialize Auth with local persistence
+const auth = initializeAuth(app, {
+  persistence: getReactNativePersistence(AsyncStorage) // Use AsyncStorage for local persistence
+});
 
-// Tells Supabase Auth to continuously refresh the session automatically
-// if the app is in the foreground. When this is added, you will continue
-// to receive `onAuthStateChange` events with the `TOKEN_REFRESHED` or
-// `SIGNED_OUT` event if the user's session is terminated. This should
-// only be registered once.
-AppState.addEventListener('change', (state) => {
-  if (state === 'active') {
-    supabase.auth.startAutoRefresh()
-  } else {
-    supabase.auth.stopAutoRefresh()
-  }
-})
+// Initialize Firestore
+const firestore: Firestore = getFirestore(app);
+
+export { auth, firestore};

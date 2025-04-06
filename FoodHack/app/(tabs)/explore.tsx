@@ -16,10 +16,13 @@ export default function FoodHistory() {
   useEffect(() => {
     // Fetch food history data from Supabase
     const fetchFoodHistory = async () => {
+      const { data: sessionData } = await supabase.auth.getSession();
+      const userId = sessionData.session?.user.id;
       const { data, error } = await supabase
-        .from('food_history')
-        .select('*')
-        .order('created_at', { ascending: false });
+        .from('FoodHack')
+        .select('recommendations')
+        .eq('id', userId)
+        .single();
       if (error) {
         console.error('Error fetching food history:', error);
       } else {

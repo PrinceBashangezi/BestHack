@@ -1,6 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { View, Text, StyleSheet, Alert, TouchableOpacity, SectionList } from 'react-native';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import { MaterialIcons, Feather, FontAwesome, Ionicons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
 import { supabase } from '../supabase'; // Import Supabase client
@@ -26,20 +25,29 @@ export default function SettingsScreen() {
 
   useEffect(() => {
     const fetchUsername = async () => {
-      const user = supabase.auth.getUser();
-      if (user) {
-        const { data, error } = await supabase
-          .from('users')
-          .select('username')
-          .eq('id', user.id)
-          .single();
+      const { data: sessionData, error: sessionError } = await supabase.auth.getSession();
 
-        if (error) {
-          console.error("Error fetching username:", error);
-          setUsername('Guest');
-        } else {
-          setUsername(data?.username || 'Guest');
-        }
+      if (sessionError || !sessionData?.session?.user) {
+        console.error("Error fetching session or user not logged in:", sessionError);
+        setUsername('Guest');
+        return;
+      }
+
+      const userId = sessionData.session.user.id;
+
+      const { data, error } = await supabase
+        .from('FoodHack')
+        .select('user_data')
+        .eq('id', userId)
+        .single();
+
+      if (error) {
+        console.error("Error fetching user data:", error);
+        setUsername('Guest');
+      } else if (data?.user_data && Array.isArray(data.user_data) && data.user_data.length > 0) {
+        setUsername(data.user_data[0]); // Assuming the first element in the array is the user's name
+      } else {
+        setUsername('Guest');
       }
     };
 
@@ -68,8 +76,14 @@ export default function SettingsScreen() {
   };
 
   const handleDeleteAccount = async () => {
-    const user = supabase.auth.getUser();
-    if (!user) return;
+    const { data: sessionData, error: sessionError } = await supabase.auth.getSession();
+
+    if (sessionError || !sessionData?.session?.user) {
+      Alert.alert("Error", "No user is logged in.");
+      return;
+    }
+
+    const userId = sessionData.session.user.id;
 
     Alert.alert(
       "Delete Account",
@@ -84,10 +98,11 @@ export default function SettingsScreen() {
           style: "destructive",
           onPress: async () => {
             try {
+              // Fetch user data
               const { data, error: fetchError } = await supabase
                 .from('users')
                 .select('*')
-                .eq('id', user.id)
+                .eq('id', userId)
                 .single();
 
               if (fetchError) {
@@ -95,35 +110,49 @@ export default function SettingsScreen() {
                 return;
               }
 
-              const { error: deleteError } = await supabase
+              // Archive user data
+              const { error: archiveError } = await supabase
                 .from('formerUsers')
                 .insert(data);
 
-              if (deleteError) {
+              if (archiveError) {
                 Alert.alert("Error", "Failed to archive user data. Please try again.");
                 return;
               }
 
+              // Delete user data from 'users' table
               const { error: removeError } = await supabase
                 .from('users')
                 .delete()
-                .eq('id', user.id);
+                .eq('id', userId);
 
               if (removeError) {
                 Alert.alert("Error", "Failed to delete user data. Please try again.");
                 return;
               }
 
+              // Delete user from Supabase authentication system
+              const adminApiUrl = `https://<your-supabase-project>.supabase.co/auth/v1/admin/users/${userId}`;
+              const adminApiKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+
+              const response = await fetch(adminApiUrl, {
+                method: 'DELETE',
+                headers: {
+                  Authorization: `Bearer ${adminApiKey}`,
+                  'Content-Type': 'application/json',
+                },
+              });
+
+              if (!response.ok) {
+                Alert.alert("Error", "Failed to delete user from authentication system.");
+                return;
+              }
+
+              // Sign out the user
               const { error: signOutError } = await supabase.auth.signOut();
               if (signOutError) {
                 Alert.alert("Error", "Failed to log out after account deletion.");
               }
-
-              const keysToRemove = [
-                "expoPushToken",
-                "isVerified",
-              ];
-              await AsyncStorage.multiRemove(keysToRemove);
 
               Alert.alert("Success", "Your account has been deleted.", [{ text: "OK" }]);
             } catch (error) {
